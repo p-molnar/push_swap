@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   error.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/03/31 20:11:56 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/03/31 16:01:23 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/03/31 20:13:03 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <libft.h>
 #include <push_swap.h>
-#include <ps_custom_data_types.h>
+#define STDERR 2
 
-int	main(int argc, char *argv[])
+void	throw_error(void)
 {
-	t_stk	stk;
-	if (argc < 2)
-		return (EXIT_FAILURE);
-	parse_cla(argc, argv, &stk);
-	return (EXIT_SUCCESS);
+	const char *error_msg = "error\n";
+	write(STDERR, error_msg, ft_strlen(error_msg));
+	exit(EXIT_FAILURE);
 }

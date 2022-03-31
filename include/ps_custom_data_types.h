@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   custom_data_types.h                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/03/31 20:11:56 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/03/31 19:46:00 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/03/31 20:10:07 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <libft.h>
-#include <push_swap.h>
-#include <ps_custom_data_types.h>
+#ifndef CUSTOM_DATA_TYPES_H
+# define CUSTOM_DATA_TYPES_H
 
-int	main(int argc, char *argv[])
+# include <libft.h>
+
+typedef struct	s_stk
 {
-	t_stk	stk;
-	if (argc < 2)
-		return (EXIT_FAILURE);
-	parse_cla(argc, argv, &stk);
-	return (EXIT_SUCCESS);
-}
+	t_list	a;	
+	t_list	b;
+}				t_stk;
+
+#endif

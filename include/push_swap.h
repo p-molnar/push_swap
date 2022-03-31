@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   push_swap.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/03/31 20:11:56 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/03/31 20:12:50 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <libft.h>
-#include <push_swap.h>
-#include <ps_custom_data_types.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(int argc, char *argv[])
-{
-	t_stk	stk;
-	if (argc < 2)
-		return (EXIT_FAILURE);
-	parse_cla(argc, argv, &stk);
-	return (EXIT_SUCCESS);
-}
+# include <unistd.h>
+# include <stdlib.h>
+# include <libft.h>
+# include <ps_custom_data_types.h>
+
+void	parse_cla(int argc, char *argv[], t_stk * stk);
+void	throw_error(void);
+
+#endif
