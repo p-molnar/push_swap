@@ -38,7 +38,7 @@
 // 	}
 // }
 
-int	ft_atoi_ptr_shifter(char **str)
+int	ft_atoi_modded(char **str)
 {
 	int			num;
 	int			sign;
@@ -46,18 +46,20 @@ int	ft_atoi_ptr_shifter(char **str)
 
 	num = 0;
 	sign = 1;
-	while (**str && ft_isspace(**str))
-		(*str)++;
 	if (**str && (**str == '-' || **str == '+'))
 	{
 		sign = coeff[**str == '-'];
 		(*str)++;
 	}
+	else if (!ft_isdigit(**str))
+		throw_error();
 	while (**str && ft_isdigit(**str))
 	{
 		num = 10 * num + (**str - '0');
 		(*str)++;
 	}
+	if (**str != ' ' && **str != '\0')
+		throw_error();
 	return (sign * num);
 }
 
@@ -72,55 +74,23 @@ static void	parse_values(int argc, char *argv[], t_sllist *stk)
 	while (i < (size_t)argc)
 	{
 		curr_arg = argv[i];
+		if (curr_arg[ft_strlen(curr_arg) - 1] == ' ')
+			throw_error();
 		while (*curr_arg)
 		{
-			val = ft_atoi_ptr_shifter(&curr_arg);
+			val = ft_atoi_modded(&curr_arg);
 			printf("val = %d, curr_arg: %d\n", val, *curr_arg);
 			new_node = ft_lstnew(&val);
 			ft_lstadd_back(&(stk->a), new_node);
+			if (*curr_arg == ' ')
+				curr_arg++;
 		}
 		i++;
 	}
-}
-			
-static bool	is_valid_cla_format(int argc, char *argv[])
-{
-	size_t	i;
-	size_t	j;
-	char	*curr_arg;
-	bool	on_number;
-	
-	i = 1;
-	on_number = false;
-	while (i < (size_t)argc)
-	{
-		curr_arg = argv[i];
-		j = 0;
-		while (curr_arg[j])
-		{
-			if (j == 0 && (!ft_isdigit(curr_arg[j]) || curr_arg[ft_strlen(curr_arg) - 1] == ' '))
-				return (false);
-			if (ft_isdigit(curr_arg[j]))
-				on_number = true;
-			else if (on_number && curr_arg[j] == ' ')
-				on_number = false;
-			else
-				return (false);	
-			j++;
-		}
-		i++;
-	}
-	return (true);
 }
 
 void	parse_cla(int argc, char *argv[], t_sllist *stk)
 {
 	(void)stk;
-	if (is_valid_cla_format(argc, argv))
-	{
-		printf("valid val\n");
-		parse_values(argc, argv, stk);
-	}
-	else
-		throw_error();
+	parse_values(argc, argv, stk);
 }
