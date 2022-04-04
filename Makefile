@@ -36,7 +36,7 @@ re: fclean
 
 $(LIBFT_PATH):
 	make $(LIBFT) --directory=$(LIBFT_DIR)
-	@sleep 0.5
+	@sleep 1
 	make bonus --directory=$(LIBFT_DIR)
 
 .PHONY: all clean fclean re

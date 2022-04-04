@@ -63,11 +63,10 @@ int	ft_atoi_modded(char **str)
 	return (sign * num);
 }
 
-static void	parse_values(int argc, char *argv[], t_sllist *stk)
+static void	parse_values(int argc, char *argv[], t_list *stk)
 {
 	size_t	i;
-	int		val;
-	t_list	*new_node;
+	// int		val;
 	char	*curr_arg;
 
 	i = 1;
@@ -78,10 +77,9 @@ static void	parse_values(int argc, char *argv[], t_sllist *stk)
 			throw_error();
 		while (*curr_arg)
 		{
-			val = ft_atoi_modded(&curr_arg);
-			printf("val = %d, curr_arg: %d\n", val, *curr_arg);
-			new_node = ft_lstnew(&val);
-			ft_lstadd_back(&(stk->a), new_node);
+			// val = ft_atoi_modded(&curr_arg);
+			// printf("val = %d, curr_arg: %d\n", val, *curr_arg);
+			ft_lstadd_back(&stk, ft_lstnew(curr_arg));
 			if (*curr_arg == ' ')
 				curr_arg++;
 		}
@@ -89,7 +87,7 @@ static void	parse_values(int argc, char *argv[], t_sllist *stk)
 	}
 }
 
-void	parse_cla(int argc, char *argv[], t_sllist *stk)
+void	parse_cla(int argc, char *argv[], t_list *stk)
 {
 	(void)stk;
 	parse_values(argc, argv, stk);
