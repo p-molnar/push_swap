@@ -15,30 +15,10 @@
 #include <stdio.h>
 
 #include <push_swap.h>
+#include <sl_list_ops.h>
 
-// static int	ft_atoi(const char *str)
-// {
-// }
 
-// static void	parse_values(int argc, char *argv[], t_stk * stk)
-// {
-// 	size_t	i;
-// 	size_t	j;
-// 	char	*curr_arg;
-
-// 	i = 0;
-// 	while (i < (size_t)argc)
-// 	{
-// 		j = 0;
-// 		curr_arg = argv[i];
-// 		while (*curr_arg)
-// 		{	
-			
-// 		}
-// 	}
-// }
-
-int	ft_atoi_modded(char **str)
+static int	ft_atoi_modded(char **str)
 {
 	int			num;
 	int			sign;
@@ -51,7 +31,7 @@ int	ft_atoi_modded(char **str)
 		sign = coeff[**str == '-'];
 		(*str)++;
 	}
-	else if (!ft_isdigit(**str))
+	if (!ft_isdigit(**str))
 		throw_error();
 	while (**str && ft_isdigit(**str))
 	{
@@ -60,14 +40,15 @@ int	ft_atoi_modded(char **str)
 	}
 	if (**str != ' ' && **str != '\0')
 		throw_error();
-	return (sign * num);
+	return (num * sign);
 }
 
-static void	parse_values(int argc, char *argv[], t_list *stk)
+void	parse_values(int argc, char *argv[], t_node **stk)
 {
+	int		val;
 	size_t	i;
-	// int		val;
 	char	*curr_arg;
+	t_node	*new_node;
 
 	i = 1;
 	while (i < (size_t)argc)
@@ -77,9 +58,16 @@ static void	parse_values(int argc, char *argv[], t_list *stk)
 			throw_error();
 		while (*curr_arg)
 		{
-			// val = ft_atoi_modded(&curr_arg);
-			// printf("val = %d, curr_arg: %d\n", val, *curr_arg);
-			ft_lstadd_back(&stk, ft_lstnew(curr_arg));
+			val = ft_atoi_modded(&curr_arg);
+			// printf("val = %d, curr_arg_ptr: %d\n", val, *curr_arg);
+			if (!sllist_search(*stk, val))
+			{
+				new_node = create_node(val);
+				// printf("new_node_content: %d\n", *new_node->val);
+				sllist_append(stk, new_node);
+			}
+			else
+				throw_error();
 			if (*curr_arg == ' ')
 				curr_arg++;
 		}
@@ -87,8 +75,7 @@ static void	parse_values(int argc, char *argv[], t_list *stk)
 	}
 }
 
-void	parse_cla(int argc, char *argv[], t_list *stk)
+void	parse_cla(int argc, char *argv[], t_node **stk)
 {
-	(void)stk;
 	parse_values(argc, argv, stk);
 }

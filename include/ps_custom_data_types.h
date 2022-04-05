@@ -6,19 +6,23 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 19:46:00 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/01 10:29:41 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/05 13:56:39 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUSTOM_DATA_TYPES_H
-# define CUSTOM_DATA_TYPES_H
+#ifndef PS_CUSTOM_DATA_TYPES_H
+# define PS_CUSTOM_DATA_TYPES_H
 
-# include <libft.h>
+typedef struct	s_node
+{
+	int				*val;
+	struct s_node	*next;
+}				t_node;
 
 typedef struct	s_sllist
 {
-	t_list	*a;	
-	t_list	*b;
+	t_node	*a;	
+	t_node	*b;
 }				t_sllist;
 
 #endif

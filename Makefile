@@ -11,6 +11,7 @@ LIBFT_PATH	=	$(LIBFT_DIR)/$(LIBFT)
 SRC			=	main.c 		\
 				parse.c		\
 				error.c		\
+				sl_list_ops.c	\
 
 OBJ			=	$(addprefix obj/, $(SRC:.c=.o))
 

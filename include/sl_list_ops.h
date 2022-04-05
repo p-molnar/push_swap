@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.h                                        :+:    :+:            */
+/*   sl_list_ops.h                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/05 14:11:48 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/04/05 13:53:06 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/04/05 14:34:29 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef SL_LIST_OPS_H
+# define SL_LIST_OPS_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <libft.h>
-# include <ps_custom_data_types.h>
+#include <ps_custom_data_types.h>
 
-void	parse_cla(int argc, char *argv[], t_node **stk);
-void	throw_error(void);
-
+t_node	*create_node(int num);
+t_node	*get_last_node(t_node *head);
+void	sllist_append(t_node **head, t_node *new_node);
+t_node	*sllist_search(t_node *head, int val);
 #endif
