@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ps_custom_data_types.h                             :+:    :+:            */
+/*   check_sorting.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/03/31 19:46:00 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/06 18:36:19 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/04/06 15:40:52 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/04/06 16:08:00 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_CUSTOM_DATA_TYPES_H
-# define PS_CUSTOM_DATA_TYPES_H
+#include <ps_custom_data_types.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
-# include <stddef.h>
+// if stk is null, it'll return ture!
 
-typedef struct	s_node
+bool	is_sorted(t_node *stk)
 {
-	int				*val;
-	struct s_node	*next;
-}				t_node;
-
-typedef struct	s_sllist
-{
-	t_node	*head;
-	size_t	size;
-}				t_sllist;
-
-typedef struct	s_stk
-{
-	t_sllist	a;
-	t_sllist	b;
-}				t_stk;
-
-
-#endif
+	t_node	*curr_node;
+	t_node	*next_node;
+	
+	curr_node = stk;
+	while (curr_node)
+	{
+		next_node = curr_node->next;
+		if (next_node != NULL)
+		{
+			if (*curr_node->val > *next_node->val)
+				return (false);
+		}
+		curr_node = curr_node->next;
+	}
+	return (true);
+}

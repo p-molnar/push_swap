@@ -15,8 +15,6 @@
 #include <stdio.h>
 
 #include <push_swap.h>
-#include <sl_list_ops.h>
-
 
 static int	ft_atoi_modded(char **str)
 {
@@ -43,7 +41,7 @@ static int	ft_atoi_modded(char **str)
 	return (num * sign);
 }
 
-void	parse_values(int argc, char *argv[], t_node **stk)
+void	parse_vals(int argc, char *argv[], t_node **stk)
 {
 	int		val;
 	size_t	i;
@@ -59,11 +57,9 @@ void	parse_values(int argc, char *argv[], t_node **stk)
 		while (*curr_arg)
 		{
 			val = ft_atoi_modded(&curr_arg);
-			// printf("val = %d, curr_arg_ptr: %d\n", val, *curr_arg);
 			if (!sllist_search(*stk, val))
 			{
 				new_node = create_node(val);
-				// printf("new_node_content: %d\n", *new_node->val);
 				sllist_append(stk, new_node);
 			}
 			else
@@ -75,7 +71,12 @@ void	parse_values(int argc, char *argv[], t_node **stk)
 	}
 }
 
-void	parse_cla(int argc, char *argv[], t_node **stk)
+void	parse_cla(int argc, char *argv[], t_sllist *stk)
 {
-	parse_values(argc, argv, stk);
+	t_node	stk_head;
+
+	stk_head = stk->head;
+	parse_vals(argc, argv, );
+
+
 }
