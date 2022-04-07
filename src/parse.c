@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -73,10 +72,6 @@ void	parse_vals(int argc, char *argv[], t_node **stk)
 
 void	parse_cla(int argc, char *argv[], t_sllist *stk)
 {
-	t_node	stk_head;
-
-	stk_head = stk->head;
-	parse_vals(argc, argv, );
-
-
+	parse_vals(argc, argv, &(stk->head));
+	stk->size = get_sllist_size(stk->head);
 }

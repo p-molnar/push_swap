@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 13:44:10 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/06 18:38:00 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/06 22:54:44 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	sllist_append(t_node **head, t_node *new_node)
 t_node	*sllist_search(t_node *head, int val)
 {
 	t_node	*tmp;
-	
+
 	tmp = head;
 	while (tmp)
 	{
