@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 13:44:10 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/06 22:54:44 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/07 19:35:31 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ t_node	*get_last_node(t_node *head)
 	while (tmp->next && tmp)
 		tmp = tmp->next;
 	return (tmp);
+}
+
+t_node	*get_penultimate_node(t_node *head)
+{
+	t_node	*curr_node;
+	t_node	*last_node;
+
+	curr_node = head;
+	last_node = get_last_node(head);
+	while (curr_node->next != last_node)
+		curr_node = curr_node->next;
+	return (curr_node);
 }
 
 t_node *create_node(int num)

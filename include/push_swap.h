@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/06 22:27:12 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/07 12:50:41 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <ps_custom_data_types.h>
 # include <sl_list_ops.h>
 
-void	parse_cla(int argc, char *argv[], t_sllist *stk);
+void	parse_cla(int argc, char *argv[], t_node **stk);
 void	throw_error(void);
 
 // check_sorting.c

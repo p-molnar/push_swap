@@ -13,6 +13,8 @@ SRC			=	main.c 				\
 				error.c				\
 				sl_list_ops.c		\
 				check_sorting.c		\
+				sorting_ops.c		\
+				sorting_instructions.c	\
 
 OBJ			=	$(addprefix obj/, $(SRC:.c=.o))
 
