@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/07 11:19:22 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/07 19:42:09 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/11 11:43:17 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PS_SORTING_OPS_H
 
 void	swap(t_node **stk);
-t_node	*pop(t_node **stk);
 void	push(t_node **stk_1, t_node **stk_2);
 void	rotate(t_node **stk, bool reverse);
 

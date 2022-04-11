@@ -15,6 +15,7 @@ SRC			=	main.c 				\
 				check_sorting.c		\
 				sorting_ops.c		\
 				sorting_instructions.c	\
+				algo.c
 
 OBJ			=	$(addprefix obj/, $(SRC:.c=.o))
 

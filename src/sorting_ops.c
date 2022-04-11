@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/06 17:44:57 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/07 19:36:44 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/11 12:16:47 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,16 @@ void	swap(t_node **stk)
 void	push(t_node **stk_1, t_node **stk_2)
 {
 	t_node	*popped_node;
+	bool	is_last_popped_node;
 
 	if (stk_1 == NULL || *stk_1 == NULL)
 		return ;
+	is_last_popped_node = (get_sllist_size(*stk_1) == 1);
 	popped_node = pop(stk_1);
 	popped_node->next = *stk_2;
 	*stk_2 = popped_node;
+	if (is_last_popped_node)
+		*stk_1 = NULL;
 }
 
 // rotate to the right. first el becomes last and

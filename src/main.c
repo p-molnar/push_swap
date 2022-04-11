@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/07 20:09:36 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/11 16:54:23 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,39 @@ void	print_stacks(t_node *stk_a, t_node *stk_b)
 	}
 	printf("-----------+-----------\n");
 }
+
 int	main(int argc, char *argv[])
 {
 	t_node	*stk_a;
 	t_node	*stk_b;
+	size_t	stk_size;
 
 	stk_a = NULL;
 	stk_b = NULL;
 	if (argc < 2)
 		return (EXIT_FAILURE);
 	parse_cla(argc, argv, &stk_a);
-	printf("sorted = %d\n", is_sorted(stk_a));
+	stk_size = get_sllist_size(stk_a);
+
+	// print_stacks(stk_a, stk_b);
+	// printf("asc_sorted = %d\n", is_stack_sorted(stk_a, stk_size, ASC));
+	// printf("desc_sorted = %d\n", is_stack_sorted(stk_a, stk_size, DESC));
+
+	// pb(&stk_a, &stk_b);
+
+	// print_stacks(stk_a, stk_b);
+	// printf("sorted = %d\n", is_stack_sorted(stk_a, stk_size));
+
+	// pb(&stk_a, &stk_b);
+
+	// print_stacks(stk_a, stk_b);
+	// printf("sorted = %d\n", is_stack_sorted(stk_a, stk_size));
+
+	// pb(&stk_a, &stk_b);
+
+	// print_stacks(stk_a, stk_b);
+	// printf("sorted = %d\n", is_stack_sorted(stk_a, stk_size));
+	// sort_1(&stk_a, &stk_b, stk_size);
+	sort_2(&stk_a, &stk_b, stk_size);
 	return (EXIT_SUCCESS);
 }
