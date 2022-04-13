@@ -8,14 +8,14 @@ LIBFT_DIR	=	libft
 LIBFT		=	libft.a
 LIBFT_PATH	=	$(LIBFT_DIR)/$(LIBFT)
 
-SRC			=	main.c 				\
-				parse.c				\
-				error.c				\
-				sl_list_ops.c		\
-				check_sorting.c		\
-				sorting_ops.c		\
+SRC			=	main.c 					\
+				parse.c					\
+				error.c					\
+				sl_list_ops.c			\
+				check_sorting.c			\
+				sorting_ops.c			\
 				sorting_instructions.c	\
-				algo.c
+				algo.c					\
 
 OBJ			=	$(addprefix obj/, $(SRC:.c=.o))
 

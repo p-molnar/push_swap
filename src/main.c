@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/11 16:54:23 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/12 17:07:28 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ int	main(int argc, char *argv[])
 	parse_cla(argc, argv, &stk_a);
 	stk_size = get_sllist_size(stk_a);
 
+	print_stacks(stk_a, stk_b);
+	reindex_list(stk_a);
+	print_stacks(stk_a, stk_b);
 	// print_stacks(stk_a, stk_b);
 	// printf("asc_sorted = %d\n", is_stack_sorted(stk_a, stk_size, ASC));
 	// printf("desc_sorted = %d\n", is_stack_sorted(stk_a, stk_size, DESC));
@@ -77,6 +80,6 @@ int	main(int argc, char *argv[])
 	// print_stacks(stk_a, stk_b);
 	// printf("sorted = %d\n", is_stack_sorted(stk_a, stk_size));
 	// sort_1(&stk_a, &stk_b, stk_size);
-	sort_2(&stk_a, &stk_b, stk_size);
+	// sort_2(&stk_a, &stk_b, stk_size);
 	return (EXIT_SUCCESS);
 }

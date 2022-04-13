@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 13:44:10 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/07 19:35:31 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/12 17:05:12 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ t_node *create_node(int num)
 {
 	t_node	*node;
 	int		*num_cpy;
-	
+
 	node = malloc(sizeof(t_node));
 	num_cpy = malloc(sizeof(int));
 	if (!node || !num_cpy)
 		return (NULL);
 	*num_cpy = num;
 	node->val = num_cpy;
+	node->index = NULL;
 	node->next = NULL;
 	return (node);
 }
@@ -91,4 +92,51 @@ size_t	get_sllist_size(t_node *head)
 		head = head->next;
 	}
 	return (node_count);
+}
+
+int	index_of(t_node *lookup_val, t_node **arr, size_t arr_size)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < arr_size)
+	{
+		if (arr[i] == lookup_val)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+void	reindex_list(t_node *stk)
+{
+	size_t	sllist_size;
+	t_node	**changed_nodes;
+	int		min;
+	size_t	i;
+	t_node	*min_node;
+	t_node	*tmp;
+
+	tmp = stk;
+	i = 0;
+	min_node = NULL;
+	min = 0;
+	sllist_size = get_sllist_size(stk);
+	changed_nodes = malloc(sizeof(t_node *) * sllist_size);
+	while (i != sllist_size)
+	{
+		while (stk)
+		{
+			if (index_of(stk, changed_nodes, i) == -1 && *stk->val < min)
+			{
+				min_node = stk;
+			}
+			stk = stk->next;
+		}
+		*min_node->val = i;
+		changed_nodes[i] = stk;
+		i++;
+		stk = tmp;
+		min = 0;
+	}
 }
