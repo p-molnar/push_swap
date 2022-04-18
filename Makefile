@@ -17,6 +17,7 @@ SRC			=	main.c 					\
 				sorting_instructions.c	\
 				algo.c					\
 				index_list.c			\
+				process_instructions.c	\
 
 OBJ			=	$(addprefix obj/, $(SRC:.c=.o))
 

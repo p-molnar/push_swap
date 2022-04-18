@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/13 22:06:34 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/18 17:18:30 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void	print_stacks(t_node *stk_a, t_node *stk_b)
 		}	
 		else
 			printf("%6c", ' '); 
-		printf("\n");
-	}
+		printf("\n"); }
 	printf("-----------+-----------\n");
 }
 
@@ -57,11 +56,14 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	parse_cla(argc, argv, &stk_a);
 	stk_size = get_sllist_size(stk_a);
-	print_stacks(stk_a, stk_b);
+	// print_stacks(stk_a, stk_b);
 	index_list(stk_a);
-	print_stacks(stk_a, stk_b);
-	sort_stack(&stk_a, &stk_b);
-	print_stacks(stk_a, stk_b);
+	// print_stacks(stk_a, stk_b);
+	// sort_stack(&stk_a, &stk_b, stk_size);
+	merge_sort(&stk_a, &stk_b, stk_size);
+		
+	// sort_2(&stk_a, &stk_b, stk_size);
+	// print_stacks(stk_a, stk_b);
 	// printf("issorted: %d\n", is_stack_sorted(stk_a, get_sllist_size(stk_a), ASCENDING));
 	
 	// reindex_list(stk_a);
