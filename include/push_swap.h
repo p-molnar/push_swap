@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/18 17:20:23 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/20 16:08:28 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ bool	is_stack_sorted(t_node *stk, size_t list_size, int sorting);
 void	sort_1(t_node **stk_a, t_node **stk_b, size_t list_size);
 void	sort_2(t_node **stk_a, t_node **stk_b, size_t list_size);
 t_node	*get_extreme_val(t_node *stk, int extreme_type);
-void	sort_stack(t_node **stk_a, t_node **stk_b, size_t stack_size);
+void	sort_by_radix(t_node **stk_a, t_node **stk_b, size_t stack_size);
 void	merge_sort(t_node **stk_a, t_node **stk_b, size_t list_size);
 
 // main.c

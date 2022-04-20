@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/18 17:18:30 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/20 16:08:38 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	main(int argc, char *argv[])
 	// print_stacks(stk_a, stk_b);
 	index_list(stk_a);
 	// print_stacks(stk_a, stk_b);
-	// sort_stack(&stk_a, &stk_b, stk_size);
-	merge_sort(&stk_a, &stk_b, stk_size);
+	sort_by_radix(&stk_a, &stk_b, stk_size);
+	// merge_sort(&stk_a, &stk_b, stk_size);
 		
 	// sort_2(&stk_a, &stk_b, stk_size);
 	// print_stacks(stk_a, stk_b);

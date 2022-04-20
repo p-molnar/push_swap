@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 10:29:52 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/18 17:43:37 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/20 16:08:13 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ bool	is_stack_separated(t_node *stk, size_t counter , int criteria)
 }
 
 // sort stack by radix
-void	sort_stack(t_node **stk_a, t_node **stk_b, size_t stack_size)
+void	sort_by_radix(t_node **stk_a, t_node **stk_b, size_t stack_size)
 {
 	long int	bit_mask;
 	t_node			*tmp;
