@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/20 16:08:28 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/21 13:25:28 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <stdio.h>
 
 # include <libft.h>
 # include <ps_custom_data_types.h>
@@ -29,10 +30,10 @@ enum {
 
 enum {
 	MIN = -1,
-	MAX = 1, 
+	MAX = 1,
 };
- 
-void	parse_cla(int argc, char *argv[], t_node **stk);
+
+void	parse_input(int argc, char *argv[], t_node **stk);
 void	throw_error(void);
 
 // check_sorting.c
@@ -55,5 +56,9 @@ int		index_of(t_node *lookup_val, t_node **arr, size_t arr_size);
 
 // process_instructions.c
 void	collect_instructions(char *instruction, char *new_instruction);
+
+// util.c
+void	print_stacks(t_node *stk_a, t_node *stk_b);
+bool	is_stack_separated(t_node *stk, size_t counter, int criteria);
 
 #endif

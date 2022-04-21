@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/18 13:46:04 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/18 17:22:49 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/21 10:41:38 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin_mod(char *s1, char *s2)
 	buf = ft_calloc((s1_len + s2_len + 1), sizeof(char));
 	if (!buf)
 		exit(1);
-	if (s1 !=NULL)
+	if (s1 != NULL)
 		ft_memcpy(buf, s1, s1_len);
 	ft_memcpy(buf + s1_len, s2, s2_len);
 	return (buf);

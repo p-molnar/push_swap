@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 10:29:52 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/20 16:08:13 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/04/21 14:18:01 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,52 +154,70 @@ void	sort_2(t_node **stk_a, t_node **stk_b, size_t list_size)
 	// print_stacks(*stk_a, *stk_b);
 }
 
-bool	is_stack_separated(t_node *stk, size_t counter , int criteria)
+void	exec_suitable_rotation(t_node **stk_a, size_t bit_count)
 {
 	long int	bit_mask;
+	t_node		*second_node;
+	t_node		*last_node;
 
 	bit_mask = 0b1;
-	while (stk)
-	{
-		if ((*(stk->val) >> counter & bit_mask) != criteria)
-			return (false);
-		stk = stk->next;
-	}
-	return (true);
+	second_node = (*stk_a)->next;
+	last_node = get_last_node(*stk_a);
+	if (second_node == NULL)
+		second_node = last_node;
+	if ((*second_node->val >> bit_count & bit_mask) == 0)
+		ra(stk_a);
+	else if ((*last_node->val >> bit_count & bit_mask) == 0)
+		rra(stk_a);
+	else
+		ra(stk_a);
 }
 
-// sort stack by radix
+void	get_node_to_top(t_node *top_node, t_node **stk)
+{
+	size_t	stk_size;
+	size_t	top_node_index;
+
+	top_node_index = get_node_position(top_node, *stk);
+	stk_size = get_sllist_size(*stk);
+	while (*stk != top_node)
+	{
+		if (top_node_index <= stk_size / 2)
+			ra(stk);
+		else
+			rra(stk);
+	}
+}
+
 void	sort_by_radix(t_node **stk_a, t_node **stk_b, size_t stack_size)
 {
 	long int	bit_mask;
-	t_node			*tmp;
-	size_t			counter;
-	size_t			ra_count;
+	size_t		bit_shift_counter;
+	t_node		*top_node_ptr;
 
 	bit_mask = 0b1;
-	tmp = *stk_a;
-	counter = 0;
+	bit_shift_counter = 0;
+	top_node_ptr = NULL;
 	while (!is_stack_sorted(*stk_a, stack_size, ASCENDING))
 	{
-		ra_count = 0;
-		// printf("check %zu bit from left:\n", counter + 1);
-		while (!is_stack_sorted(*stk_a, stack_size, ASCENDING) && !is_stack_separated(*stk_a, counter, 1))
+		while (!is_stack_sorted(*stk_a, stack_size, ASCENDING) && !is_stack_separated(*stk_a, bit_shift_counter, 1))
 		{
-			if ((*(*stk_a)->val >> counter & bit_mask) == 0)
+			if ((*(*stk_a)->val >> bit_shift_counter & bit_mask) == 0)
 				pb(stk_a, stk_b);
 			else
 			{
-				ra_count++;
-				ra(stk_a);
+				if (top_node_ptr == NULL)
+					top_node_ptr = *stk_a;
+				exec_suitable_rotation(stk_a, bit_shift_counter);
 			}
-			// print_stacks(*stk_a, *stk_b);
+			print_stacks(*stk_a, *stk_b);
 		}
-		while (!is_stack_sorted(*stk_a, stack_size, ASCENDING) && ra_count--)
-			rra(stk_a);
-		while (!is_stack_sorted(*stk_a, stack_size, ASCENDING) && *stk_b)
+		if (!is_stack_sorted(*stk_a, stack_size, ASCENDING))
+			get_node_to_top(top_node_ptr, stk_a);
+		while (*stk_b && !is_stack_sorted(*stk_a, stack_size, ASCENDING))
 			pa(stk_a, stk_b);
-		counter++;
-		// bit_mask = bit_mask << 1;
+		bit_shift_counter++;
+		top_node_ptr = NULL;
 	}
 }
 

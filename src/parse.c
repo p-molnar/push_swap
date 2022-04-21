@@ -40,7 +40,7 @@ static int	ft_atoi_modded(char **str)
 	return (num * sign);
 }
 
-void	parse_vals(int argc, char *argv[], t_node **stk)
+void	parse_input(int argc, char *argv[], t_node **stk)
 {
 	int		val;
 	size_t	i;
@@ -48,7 +48,7 @@ void	parse_vals(int argc, char *argv[], t_node **stk)
 	t_node	*new_node;
 
 	i = 1;
-	while (i < (size_t)argc)
+	while (i < (size_t) argc)
 	{
 		curr_arg = argv[i];
 		if (curr_arg[ft_strlen(curr_arg) - 1] == ' ')
@@ -63,14 +63,8 @@ void	parse_vals(int argc, char *argv[], t_node **stk)
 			}
 			else
 				throw_error();
-			if (*curr_arg == ' ')
-				curr_arg++;
+			curr_arg += (*curr_arg == ' ');
 		}
 		i++;
 	}
-}
-
-void	parse_cla(int argc, char *argv[], t_node **stk)
-{
-	parse_vals(argc, argv, stk);
 }
