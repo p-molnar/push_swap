@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 15:55:06 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/21 10:50:02 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/02 14:24:21 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_node	*get_available_node(t_node *stk, t_node **used_nodes, size_t size)
 }
 
 // protect malloc !
-void	index_list(t_node *stk)
+void	rebase_list(t_node *stk)
 {
 	t_node	**used_nodes;
 	t_node	*min_node;

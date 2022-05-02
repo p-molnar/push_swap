@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/21 13:25:28 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/02 16:46:54 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ enum {
 	MAX = 1,
 };
 
-void	parse_input(int argc, char *argv[], t_node **stk);
+void	parse_input(int argc, char *argv[], t_stks *stk);
 void	throw_error(void);
 
 // check_sorting.c
@@ -45,20 +45,20 @@ void	sort_2(t_node **stk_a, t_node **stk_b, size_t list_size);
 t_node	*get_extreme_val(t_node *stk, int extreme_type);
 void	sort_by_radix(t_node **stk_a, t_node **stk_b, size_t stack_size);
 void	merge_sort(t_node **stk_a, t_node **stk_b, size_t list_size);
-
-// main.c
-void	print_stacks(t_node *stk_a, t_node *stk_b);
+void	sort_stack_of_size_3(t_stk **stk, size_t stk_size, int order);
+void	sort_stack_of_size_5(t_stk **stk, size_t stk_size, int order);
 
 // index_list.c
 t_node	*get_available_node(t_node *stk, t_node **used_nodes, size_t size);
-void	index_list(t_node *stk);
+void	rebase_list(t_node *stk);
 int		index_of(t_node *lookup_val, t_node **arr, size_t arr_size);
 
 // process_instructions.c
 void	collect_instructions(char *instruction, char *new_instruction);
 
 // util.c
-void	print_stacks(t_node *stk_a, t_node *stk_b);
+void	print_stacks(t_stks *stk);
 bool	is_stack_separated(t_node *stk, size_t counter, int criteria);
+void	exec_suitable_sorting(t_stks *stk);
 
 #endif

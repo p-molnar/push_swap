@@ -40,7 +40,7 @@ static int	ft_atoi_modded(char **str)
 	return (num * sign);
 }
 
-void	parse_input(int argc, char *argv[], t_node **stk)
+void	parse_input(int argc, char *argv[], t_stks *stk)
 {
 	int		val;
 	size_t	i;
@@ -56,10 +56,10 @@ void	parse_input(int argc, char *argv[], t_node **stk)
 		while (*curr_arg)
 		{
 			val = ft_atoi_modded(&curr_arg);
-			if (!sllist_search(*stk, val))
+			if (!sllist_search(stk->a.sllist, val))
 			{
 				new_node = create_node(val);
-				sllist_append(stk, new_node);
+				sllist_append(&stk->a.sllist, new_node);
 			}
 			else
 				throw_error();
