@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 10:29:52 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/02 17:12:09 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/03 22:48:50 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,12 +293,23 @@ void	sort_stack_of_size_3(t_stk **stk, size_t stk_size, int order)
 	}
 }
 
-void	sort_stack_of_size_5(stk_a, stk_b, stk_size)
+void	sort_stack_of_size_5(t_stk **stk_a, t_stk **stk_b, int stk_size)
 {
 	push(stk_a, stk_b);
+	// print_stacks_2(*stk_a, *stk_b);
 	push(stk_a, stk_b);
-	while (!is_stack_sorted(*stk_a)->sllist, stk_size)
+	// print_stacks_2(*stk_a, *stk_b);
+	sort_stack_of_size_3(stk_a, (*stk_a)->size, ASCENDING);
+	// print_stacks_2(*stk_a, *stk_b);
+	sort_stack_of_size_3(stk_b, (*stk_b)->size, DESCENDING);
+	// print_stacks_2(*stk_a, *stk_b);
+	while (!is_stack_sorted((*stk_a)->sllist, stk_size, ASCENDING))
 	{
-		
+		if ((*stk_b)->sllist != NULL && 
+			(*(*stk_a)->sllist->val - *(*stk_b)->sllist->val) == 1)
+			push(stk_b, stk_a);
+		else
+			rotate(stk_a, false);
+		// print_stacks_2(*stk_a, *stk_b);
 	}
 }

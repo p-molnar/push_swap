@@ -30,7 +30,8 @@
 
 void	update_stk_size(t_stk **stk_1, t_stk **stk_2)
 {
-	(*)
+	(*stk_1)->size = get_sllist_size((*stk_1)->sllist);
+	(*stk_2)->size = get_sllist_size((*stk_2)->sllist);
 }
 
 static t_node	*pop(t_node **stk)
@@ -99,7 +100,9 @@ void	rotate(t_stk **stk, bool reverse)
 		top->next = NULL;
 		btm->next = top;
 	}
-	printf("%cr%c\n", reverse * 'r', (*stk)->name);
+	if (reverse)
+		printf("r");
+	printf("r%c\n", (*stk)->name);
 }
 // // sb (swap b): Swap the first 2 elements at the top of stack b. 
 // // Do nothing if there is only one or no elements.

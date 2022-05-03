@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 13:44:10 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/13 15:58:41 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/02 21:43:06 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_node	*sllist_search(t_node *head, int val)
 	t_node	*tmp;
 
 	tmp = head;
-	while (tmp)
+	while (tmp != NULL)
 	{
 		if (*tmp->val == val)
 			return (tmp);
