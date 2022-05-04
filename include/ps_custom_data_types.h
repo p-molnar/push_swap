@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 19:46:00 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 12:59:38 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 16:55:49 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef struct s_node
 {
-	int				val;
+	long int		val;
 	int				index;
 	struct s_node	*prev;
 	struct s_node	*next;

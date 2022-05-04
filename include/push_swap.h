@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 13:06:11 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 16:26:20 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ enum {
 	MAX = 1,
 };
 
+// parse.c
+void	validate_data(t_stacks *stks);
+
 void	parse_input(int argc, char *argv[], t_stacks *stk);
-void	throw_error(t_stacks *stk);
+void	throw_error(t_stacks *stk, bool is_verbose);
 
 // check_sorting.c
 bool	is_stack_sorted(t_node *stk, size_t list_size, int sorting);

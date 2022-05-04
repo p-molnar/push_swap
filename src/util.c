@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/21 10:27:45 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 13:30:39 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 17:25:38 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	print_stacks(t_stacks *stk)
 {
-	t_node *stk_a;
-	t_node *stk_b;
+	t_node	*stk_a;
+	t_node	*stk_b;
 
-	stk_a = stk->a.list;	
-	stk_b = stk->b.list;	
+	stk_a = stk->a.list;
+	stk_b = stk->b.list;
 	printf("-----------+-----------\n");
 	printf("%5c%c%5c|%5c%c%5c\n", ' ', 'a', ' ', ' ', 'b', ' ');
 	printf("-----------+-----------\n");
@@ -26,7 +26,7 @@ void	print_stacks(t_stacks *stk)
 	{
 		if (stk_a)
 		{
-			printf("%6d", stk_a->val);
+			printf("%6ld", stk_a->val);
 			stk_a = stk_a->next;
 		}
 		else
@@ -34,7 +34,7 @@ void	print_stacks(t_stacks *stk)
 		printf("%6c", '|');
 		if (stk_b)
 		{
-			printf("%6d", stk_b->val);
+			printf("%6ld", stk_b->val);
 			stk_b = stk_b->next;
 		}	
 		else
@@ -56,7 +56,7 @@ void	print_stacks_2(t_stack *stk_1, t_stack *stk_2)
 	{
 		if (stk_a)
 		{
-			printf("%6d", stk_a->val);
+			printf("%6ld", stk_a->val);
 			stk_a = stk_a->next;
 		}
 		else
@@ -64,7 +64,7 @@ void	print_stacks_2(t_stack *stk_1, t_stack *stk_2)
 		printf("%6c", '|');
 		if (stk_b)
 		{
-			printf("%6d", stk_b->val);
+			printf("%6ld", stk_b->val);
 			stk_b = stk_b->next;
 		}	
 		else

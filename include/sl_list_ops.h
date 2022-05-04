@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 13:53:06 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 13:17:00 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 16:58:36 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 #include <ps_custom_data_types.h>
 
-t_node	*create_node(int num);
+t_node	*create_node(long int num);
 t_node	*get_last_node(t_node *head);
 t_node	*get_penultimate_node(t_node *head);
 void	append_list(t_node **head, t_node *new_node);
-t_node	*sllist_search(t_node *head, int val);
+t_node	*search_val(t_node *head, long int val);
 size_t	get_sllist_size(t_node *head);
 #endif
