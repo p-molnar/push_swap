@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/06 15:40:52 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/11 16:49:09 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 13:17:37 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	is_stack_sorted(t_node *stk, size_t list_size, int sorting)
 		next_node = curr_node->next;
 		if (next_node != NULL)
 		{
-			if (coeff * (*curr_node->val) > coeff * (*next_node->val))
+			if (coeff * (curr_node->val) > coeff * (next_node->val))
 				return (false);
 		}
 		i++;

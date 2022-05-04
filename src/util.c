@@ -6,19 +6,19 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/21 10:27:45 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 12:25:44 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 13:30:39 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	print_stacks(t_stks *stk)
+void	print_stacks(t_stacks *stk)
 {
 	t_node *stk_a;
 	t_node *stk_b;
 
-	stk_a = stk->a.sllist;	
-	stk_b = stk->b.sllist;	
+	stk_a = stk->a.list;	
+	stk_b = stk->b.list;	
 	printf("-----------+-----------\n");
 	printf("%5c%c%5c|%5c%c%5c\n", ' ', 'a', ' ', ' ', 'b', ' ');
 	printf("-----------+-----------\n");
@@ -26,7 +26,7 @@ void	print_stacks(t_stks *stk)
 	{
 		if (stk_a)
 		{
-			printf("%6d", *stk_a->val);
+			printf("%6d", stk_a->val);
 			stk_a = stk_a->next;
 		}
 		else
@@ -34,7 +34,7 @@ void	print_stacks(t_stks *stk)
 		printf("%6c", '|');
 		if (stk_b)
 		{
-			printf("%6d", *stk_b->val);
+			printf("%6d", stk_b->val);
 			stk_b = stk_b->next;
 		}	
 		else
@@ -44,10 +44,10 @@ void	print_stacks(t_stks *stk)
 	printf("-----------+-----------\n");
 }
 
-void	print_stacks_2(t_stk *stk_1, t_stk *stk_2)
+void	print_stacks_2(t_stack *stk_1, t_stack *stk_2)
 {
-	t_node *stk_a = stk_1->sllist;
-	t_node *stk_b = stk_2->sllist;
+	t_node *stk_a = stk_1->list;
+	t_node *stk_b = stk_2->list;
 
 	printf("-----------+-----------\n");
 	printf("%5c%c%5c|%5c%c%5c\n", ' ', 'a', ' ', ' ', 'b', ' ');
@@ -56,7 +56,7 @@ void	print_stacks_2(t_stk *stk_1, t_stk *stk_2)
 	{
 		if (stk_a)
 		{
-			printf("%6d", *stk_a->val);
+			printf("%6d", stk_a->val);
 			stk_a = stk_a->next;
 		}
 		else
@@ -64,7 +64,7 @@ void	print_stacks_2(t_stk *stk_1, t_stk *stk_2)
 		printf("%6c", '|');
 		if (stk_b)
 		{
-			printf("%6d", *stk_b->val);
+			printf("%6d", stk_b->val);
 			stk_b = stk_b->next;
 		}	
 		else
@@ -74,14 +74,14 @@ void	print_stacks_2(t_stk *stk_1, t_stk *stk_2)
 	printf("-----------+-----------\n");
 }
 
-void	exec_suitable_sorting(t_stks *stk)
+void	exec_suitable_sorting(t_stacks *stk)
 {
-	t_stk	*stk_a;
-	t_stk	*stk_b;
+	t_stack *stk_a;
+	t_stack *stk_b;
 
 	stk_a = &stk->a;
 	stk_b = &stk->b;
-	if (is_stack_sorted(stk_a->sllist, stk_a->size, ASCENDING))
+	if (is_stack_sorted(stk_a->list, stk_a->size, ASCENDING))
 		return ;
 	if (stk->a.size <= 3)
 		sort_stack_of_size_3(&stk_a, stk_a->size, ASCENDING);

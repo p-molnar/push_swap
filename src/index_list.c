@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 15:55:06 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/02 14:24:21 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 13:27:37 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void	rebase_list(t_node *stk)
 		while (stk)
 		{
 			if (index_of(stk, used_nodes, i) == -1
-				&& *stk->val < *min_node->val)
+				&& stk->val < min_node->val)
 				min_node = stk;
 			stk = stk->next;
 		}
-		*min_node->val = i;
+		min_node->val = i;
 		used_nodes[i++] = min_node;
 		stk = tmp;
 	}

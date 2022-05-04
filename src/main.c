@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 12:25:51 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 13:02:03 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,21 @@
 #include <ps_custom_data_types.h>
 #include <ps_sorting_ops.h>
 
+void	init_stacks(t_stacks *stks)
+{
+	stks->a.list = NULL;
+	stks->b.list = NULL;
+}
+
 int	main(int argc, char *argv[])
 {
-	t_stks	stk;
-	stk.a.sllist = NULL;
-	stk.b.sllist = NULL;
-	stk.a.name = 'a';
-	stk.b.name = 'b';
+	t_stacks	stks;
 
-	if (argc < 2)
-		return (EXIT_FAILURE);
-	parse_input(argc, argv, &stk);
-	stk.a.size = get_sllist_size(stk.a.sllist);
+	parse_input(argc, argv, &stks);
+	print_stacks(&stks);
+	// stk.a.size = get_sllist_size(stk.a.sllist);
 	// print_stacks(&stk);
-	rebase_list(stk.a.sllist);
+	// rebase_list(stk.a.sllist);
 	// print_stacks(&stk);
 	// t_stk	*stk_a = &stk.a;
 	// t_stk	*stk_b = &stk.b;

@@ -17,10 +17,10 @@
 #include <ps_sorting_ops.h>
 
 
-void	update_stk_size(t_stk **stk_1, t_stk **stk_2)
+void	update_stk_size(t_stack **stk_1, t_stack **stk_2)
 {
-	(*stk_1)->size = get_sllist_size((*stk_1)->sllist);
-	(*stk_2)->size = get_sllist_size((*stk_2)->sllist);
+	(*stk_1)->size = get_sllist_size((*stk_1)->list);
+	(*stk_2)->size = get_sllist_size((*stk_2)->list);
 }
 
 static t_node	*pop(t_node **stk)
@@ -32,60 +32,60 @@ static t_node	*pop(t_node **stk)
 	return (node);
 }
 
-void	push(t_stk **stk_1, t_stk **stk_2)
+void	push(t_stack **stk_1, t_stack **stk_2)
 {
 	t_node	*popped_node;
 	bool	is_last_popped_node;
 
-	if (stk_1 == NULL || (*stk_1)->sllist == NULL)
+	if (stk_1 == NULL || (*stk_1)->list == NULL)
 		return ;
 	is_last_popped_node = ((*stk_1)->size == 1);
-	popped_node = pop(&(*stk_1)->sllist);
-	popped_node->next = (*stk_2)->sllist;
-	(*stk_2)->sllist = popped_node;
+	popped_node = pop(&(*stk_1)->list);
+	popped_node->next = (*stk_2)->list;
+	(*stk_2)->list = popped_node;
 	if (is_last_popped_node)
-		(*stk_1)->sllist = NULL;
+		(*stk_1)->list = NULL;
 	update_stk_size(stk_1, stk_2);
 	printf("p%c\n", (*stk_2)->name);
 }
 
-void	swap(t_stk **stk)
+void	swap(t_stack **stk)
 {
 	t_node	*top;
 	t_node	*scnd;
 	t_node	*tmp;
 
-	if (stk == NULL || (*stk)->sllist == NULL || (*stk)->sllist->next == NULL)
+	if (stk == NULL || (*stk)->list == NULL || (*stk)->list->next == NULL)
 		return ;
-	top = (*stk)->sllist;
+	top = (*stk)->list;
 	scnd = top->next;
 	tmp = scnd->next;
 	scnd->next = top;
 	top->next = tmp;
-	(*stk)->sllist = scnd;
+	(*stk)->list = scnd;
 	printf("s%c\n", (*stk)->name);
 }
 
-void	rotate(t_stk **stk, bool reverse)
+void	rotate(t_stack **stk, bool reverse)
 {
 	t_node	*top;
 	t_node	*btm;
 	t_node	*penultimate;
 
-	if (stk == NULL || (*stk)->sllist == NULL || (*stk)->sllist->next == NULL)
+	if (stk == NULL || (*stk)->list == NULL || (*stk)->list->next == NULL)
 		return ;
-	top = (*stk)->sllist;
-	btm = get_last_node((*stk)->sllist);
-	penultimate = get_penultimate_node((*stk)->sllist);
+	top = (*stk)->list;
+	btm = get_last_node((*stk)->list);
+	penultimate = get_penultimate_node((*stk)->list);
 	if (reverse == true)
 	{
 		btm->next = top;
 		penultimate->next = NULL;
-		(*stk)->sllist = btm;
+		(*stk)->list = btm;
 	}
 	else
 	{
-		(*stk)->sllist = top->next;
+		(*stk)->list = top->next;
 		top->next = NULL;
 		btm->next = top;
 	}

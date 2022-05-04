@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 19:46:00 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 12:38:38 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 12:59:38 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 
 typedef struct s_node
 {
-	int				*val;
-	int				*index;
+	int				val;
+	int				index;
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
 
-typedef struct s_stk
+typedef struct s_stack
 {
-	t_node			*sllist;
+	t_node			*list;
 	unsigned int	size;
 	char			name;
-}	t_stk;
+}	t_stack;
 
-typedef struct s_stks
+typedef struct s_staks
 {
-	t_stk	a;
-	t_stk	b;
-}	t_stks;
+	t_stack	a;
+	t_stack	b;
+}	t_stacks;
 
 #endif
