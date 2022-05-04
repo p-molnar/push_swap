@@ -11,9 +11,9 @@ LIBFT_PATH	=	$(LIBFT_DIR)/$(LIBFT)
 SRC			=	main.c 					\
 				parse.c					\
 				error.c					\
-				sl_list_ops.c			\
+				list_operations.c		\
+				stack_operations.c		\
 				check_sorting.c			\
-				sorting_ops.c			\
 				algo.c					\
 				algo_util.c				\
 				index_list.c			\

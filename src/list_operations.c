@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_list_ops.c                                      :+:    :+:            */
+/*   list_operations.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 13:44:10 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 17:23:08 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 20:08:46 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,22 @@
 
 t_node	*get_last_node(t_node *head)
 {
-	t_node	*tmp;
+	t_node	*tmp_ptr;
 
-	tmp = head;
-	while (tmp && tmp->next)
-		tmp = tmp->next;
-	return (tmp);
+	tmp_ptr = head;
+	while (tmp_ptr && tmp_ptr->next)
+		tmp_ptr = tmp_ptr->next;
+	return (tmp_ptr);
 }
 
 t_node	*get_penultimate_node(t_node *head)
 {
-	t_node	*curr_node;
 	t_node	*last_node;
 
-	curr_node = head;
 	last_node = get_last_node(head);
-	while (curr_node->next != last_node)
-		curr_node = curr_node->next;
-	return (curr_node);
+	if (last_node->prev == NULL)
+		return head;
+	return (last_node->prev);
 }
 
 t_node	*create_node(long int num)
@@ -47,6 +45,7 @@ t_node	*create_node(long int num)
 	node->val = num;
 	node->index = -1;
 	node->next = NULL;
+	node->prev = NULL;
 	return (node);
 }
 
@@ -56,12 +55,13 @@ void	append_list(t_node **head, t_node *new_node)
 
 	if (head && new_node)
 	{
-		if (!*head)
+		if (*head == NULL)
 			*head = new_node;
 		else
 		{
 			last_node = get_last_node(*head);
 			last_node->next = new_node;
+			new_node->prev = last_node;
 		}
 	}
 }

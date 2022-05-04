@@ -29,6 +29,7 @@ static t_node	*pop(t_node **stk)
 
 	node = *stk;
 	*stk = node->next;
+	(*stk)->prev = NULL;
 	return (node);
 }
 

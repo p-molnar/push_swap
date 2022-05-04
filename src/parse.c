@@ -76,7 +76,9 @@ void	validate_data(t_stacks *stks)
 	{
 		if (stk_ptr->val < INT_MIN || stk_ptr->val > INT_MAX \
 			|| search_val(stk_ptr->next, stk_ptr->val))
+		{
 			throw_error(stks, true);
+		}
 		stk_ptr = stk_ptr->next;
 	}
 }

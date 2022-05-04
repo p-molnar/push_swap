@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/21 10:27:45 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 17:25:38 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 19:41:13 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_stacks(t_stacks *stk)
 	printf("-----------+-----------\n");
 	printf("%5c%c%5c|%5c%c%5c\n", ' ', 'a', ' ', ' ', 'b', ' ');
 	printf("-----------+-----------\n");
-	while (stk_a || stk_b)
+	while (stk_a|| stk_b)
 	{
 		if (stk_a)
 		{
