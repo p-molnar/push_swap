@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/02 22:16:44 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 12:36:50 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,18 @@ void	throw_error(void);
 bool	is_stack_sorted(t_node *stk, size_t list_size, int sorting);
 
 // algo.c
-void	sort_1(t_node **stk_a, t_node **stk_b, size_t list_size);
-void	sort_2(t_node **stk_a, t_node **stk_b, size_t list_size);
 t_node	*get_extreme_val(t_node *stk, int extreme_type);
-void	sort_by_radix(t_node **stk_a, t_node **stk_b, size_t stack_size);
-void	merge_sort(t_node **stk_a, t_node **stk_b, size_t list_size);
 void	sort_stack_of_size_3(t_stk **stk, size_t stk_size, int order);
-void	sort_stack_of_size_5(t_stk **stk_a, t_stk **stk_b, int stk_size);
 
 // index_list.c
 t_node	*get_available_node(t_node *stk, t_node **used_nodes, size_t size);
 void	rebase_list(t_node *stk);
 int		index_of(t_node *lookup_val, t_node **arr, size_t arr_size);
 
-// process_instructions.c
-void	collect_instructions(char *instruction, char *new_instruction);
 
 // util.c
 void	print_stacks(t_stks *stk);
 void	print_stacks_2(t_stk *stk_1, t_stk *stk_2);
-bool	is_stack_separated(t_node *stk, size_t counter, int criteria);
 void	exec_suitable_sorting(t_stks *stk);
 
 #endif

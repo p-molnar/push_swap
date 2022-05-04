@@ -14,7 +14,6 @@ SRC			=	main.c 					\
 				sl_list_ops.c			\
 				check_sorting.c			\
 				sorting_ops.c			\
-				sorting_instructions.c	\
 				algo.c					\
 				algo_util.c				\
 				index_list.c			\

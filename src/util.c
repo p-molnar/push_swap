@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/21 10:27:45 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/02 22:31:19 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/04 12:25:44 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,10 @@ void	exec_suitable_sorting(t_stks *stk)
 
 	stk_a = &stk->a;
 	stk_b = &stk->b;
+	if (is_stack_sorted(stk_a->sllist, stk_a->size, ASCENDING))
+		return ;
 	if (stk->a.size <= 3)
 		sort_stack_of_size_3(&stk_a, stk_a->size, ASCENDING);
-	else if (stk->a.size <= 5)
-		sort_stack_of_size_5(&stk_a, &stk_b, stk_a->size);
+	// else
+	// 	sort_stack(&stk_a, &stk_b, ASCENDING);
 }
