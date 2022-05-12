@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 10:29:52 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 00:47:27 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/13 01:24:56 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,8 @@ t_node *get_min_op_count_node(t_stack *stk_a, t_stack *stk_b)
 		{
 			min_move_count_a = curr_min_move_a;
 			min_move_count_b = curr_min_move_b;
-			printf("min_move_a: %u\n", min_move_count_a);
-			printf("min_move_b: %u\n", min_move_count_b);
+			// printf("min_move_a: %u\n", min_move_count_a);
+			// printf("min_move_b: %u\n", min_move_count_b);
 			min_node = node_b;
 		}
 		node_b = node_b->next;
@@ -168,16 +168,16 @@ void	retain_sort(t_stacks *stks, int stk_size)
 	while (is_stack_sorted(stk_a->list, stk_size, ASCENDING) != true)
 	{
 		prepare_stacks_for_retain_sorting(stks);
-		print_stacks(stks);
+		// print_stacks(stks);
 		while (stk_b->list != NULL)
 		{
 			node = get_min_op_count_node(stk_a, stk_b);
-			if (node)
-				printf("min_node: %ld\n", node->val);
+			// if (node)
+			// 	printf("min_node: %ld\n", node->val);
 			get_node_to_top(&stk_b, node);
 			get_node_to_top(&stk_a, get_matching_node(stk_a, node));
 			push(&stk_b, &stk_a);
-			print_stacks(stks);
+			// print_stacks(stks);
 		}
 		get_node_to_top(&stk_a, get_extreme_val(stk_a->list, MIN));
 	}

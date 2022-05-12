@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/12 14:11:04 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 00:47:06 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/13 01:30:29 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ void	push_closest_marked_node(t_stacks *stks)
 		while (stk_a->list->is_sorted != false)
 			rotate(&stk_a, true);
 	}
+	// print_stacks(stks);
 	push(&stk_a, &stk_b);
+	// print_stacks(stks);
 }
 
 bool	stk_has_marked_node(t_node *stk)
@@ -136,7 +138,8 @@ t_node	*find_longest_coherent_list(t_node *stk)
 	while (ptr)
 	{
 		curr_ordered_el_count = get_ordered_el_count(ptr, stk);
-		printf("curr_ord_el_c: %u\n", curr_ordered_el_count);
+		// printf("curr_ord_el_c: %u\n", curr_ordered_el_count);
+		// if (curr_ordered_el_count > max_ordered_el_count)
 		if (curr_ordered_el_count > max_ordered_el_count || 
 			(curr_ordered_el_count == max_ordered_el_count && 
 			ptr->index < max_node->index))
@@ -156,7 +159,7 @@ void	mark_nodes_to_be_pushed(t_node *start_node, t_node *stk_top)
 
 	curr_max_val = start_node->val;
 	start_node->is_sorted = true;
-	printf("val: %ld, is_sorted: %d\n", start_node->val, start_node->is_sorted);
+	// printf("val: %ld, is_sorted: %d\n", start_node->val, start_node->is_sorted);
 	node = start_node->next;
 	if (node == NULL)
 		node = stk_top;
@@ -167,7 +170,7 @@ void	mark_nodes_to_be_pushed(t_node *start_node, t_node *stk_top)
 			curr_max_val = node->val;
 			node->is_sorted = true;
 		}
-		printf("val: %ld, is_sorted: %d\n", node->val, node->is_sorted);
+		// printf("val: %ld, is_sorted: %d\n", node->val, node->is_sorted);
 		node = node->next;
 		if (node == NULL)
 			node = stk_top;

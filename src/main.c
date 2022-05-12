@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 00:47:16 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/13 01:14:50 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	main(int argc, char *argv[])
 	init_stacks(&stks);
 	parse_input(argc, argv, &stks);
 	validate_data(&stks);
-	print_stacks(&stks);
+	// print_stacks(&stks);
 	sort_stacks(&stks, argc - 1);
-	print_stacks(&stks);
+	// print_stacks(&stks);
 	// while (1)
 	// {
 	// 	if (rand() % 2)
