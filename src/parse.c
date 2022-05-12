@@ -65,6 +65,8 @@ void	parse_input(int argc, char *argv[], t_stacks *stks)
 		}
 		i++;
 	}
+	stks->a.size = get_list_size(stks->a.list);
+	stks->b.size = get_list_size(stks->b.list);
 }
 
 void	validate_data(t_stacks *stks)

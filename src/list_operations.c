@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 13:44:10 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 20:08:46 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/12 15:01:39 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_node	*create_node(long int num)
 		return (NULL);
 	node->val = num;
 	node->index = -1;
+	node->is_sorted = false;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);
@@ -80,7 +81,7 @@ t_node	*search_val(t_node *head, long int val)
 	return (NULL);
 }
 
-size_t	get_sllist_size(t_node *head)
+size_t	get_list_size(t_node *head)
 {
 	size_t	node_count;	
 

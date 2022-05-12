@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sl_list_ops.h                                      :+:    :+:            */
+/*   sorting.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/05 13:53:06 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 16:58:36 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/05/12 16:59:16 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/05/13 00:11:44 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SL_LIST_OPS_H
-# define SL_LIST_OPS_H
-
+#include <push_swap.h>
 #include <ps_custom_data_types.h>
 
-t_node	*create_node(long int num);
-t_node	*get_last_node(t_node *head);
-t_node	*get_penultimate_node(t_node *head);
-void	append_list(t_node **head, t_node *new_node);
-t_node	*search_val(t_node *head, long int val);
-size_t	get_sllist_size(t_node *head);
-#endif
+void	sort_stacks(t_stacks *stks, int stk_size)
+{
+	t_stack	*stk_a;
+
+	stk_a = &stks->a;
+	if (stks->a.size <= 3)
+		sort_stack_of_size_3(&stk_a, stk_size, ASCENDING);
+	else
+		retain_sort(stks, stk_size);
+}

@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ps_sorting_ops.h                                   :+:    :+:            */
+/*   list_ops.h                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 11:19:22 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/05 18:51:52 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/04/05 13:53:06 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/05/12 15:42:40 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_SORTING_OPS_H
-# define PS_SORTING_OPS_H
+#ifndef SL_LIST_OPS_H
+# define SL_LIST_OPS_H
 
-void	swap(t_stack **stk);
-void	push(t_stack **from_stk, t_stack **to_stk);
-void	rotate(t_stack **stk, bool reverse);
+#include <ps_custom_data_types.h>
 
+t_node			*create_node(long int num);
+t_node			*get_last_node(t_node *head);
+t_node			*get_penultimate_node(t_node *head);
+void			append_list(t_node **head, t_node *new_node);
+t_node			*search_val(t_node *head, long int val);
+unsigned int	get_list_size(t_node *head);
 #endif

@@ -6,12 +6,12 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 15:55:06 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 13:27:37 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/12 15:39:11 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-#include <sl_list_ops.h>
+#include <list_ops.h>
 
 #include <stdio.h>
 
@@ -41,7 +41,7 @@ t_node	*get_available_node(t_node *stk, t_node **used_nodes, size_t size)
 }
 
 // protect malloc !
-void	rebase_list(t_node *stk)
+void	add_indexing(t_node *stk)
 {
 	t_node	**used_nodes;
 	t_node	*min_node;
@@ -49,7 +49,7 @@ void	rebase_list(t_node *stk)
 	size_t	list_size;
 	size_t	i;
 
-	list_size = get_sllist_size(stk);
+	list_size = get_list_size(stk);
 	used_nodes = malloc(list_size * sizeof(t_node *));
 	tmp = stk;
 	i = 0;
@@ -63,7 +63,7 @@ void	rebase_list(t_node *stk)
 				min_node = stk;
 			stk = stk->next;
 		}
-		min_node->val = i;
+		min_node->index = i;
 		used_nodes[i++] = min_node;
 		stk = tmp;
 	}
