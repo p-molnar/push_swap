@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   algo_util.c                                        :+:    :+:            */
+/*   free_nodes.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/21 10:43:38 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 13:26:07 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/05/13 22:13:07 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/05/13 23:56:11 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include <ps_custom_data_types.h>
+#include <stdlib.h>
 
-bool	is_stack_separated(t_node *stk, size_t counter, int criteria)
+void	free_nodes(t_stacks *stks)
 {
-	long int	bit_mask;
+	t_node	*stk_ptr;
+	t_node	*next;
 
-	bit_mask = 0b1;
-	while (stk)
+	stk_ptr = stks->a.list;
+	while (stk_ptr != NULL)
 	{
-		if ((stk->val >> counter & bit_mask) != criteria)
-			return (false);
-		stk = stk->next;
+		next = stk_ptr->next;
+		free(stk_ptr);
+		stk_ptr = next;
 	}
-	return (true);
+	stk_ptr = stks->b.list;
+	while (stk_ptr != NULL)
+	{
+		next = stk_ptr->next;
+		free(stk_ptr);
+		stk_ptr = next;
+	}
 }

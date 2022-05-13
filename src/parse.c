@@ -5,22 +5,19 @@
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/03/31 15:43:57 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/04/01 13:08:51by pmolnar       ########   odam.nl         */
+/*   Created: 2022/05/13 21:13:24 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/05/13 22:11:24 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
-#include <stdio.h>
 #include <limits.h>
-
 #include <push_swap.h>
 
-static int	ft_atoi_modded(char **str, t_stacks *stks)
+static long int	ft_atoi_modded(char **str, t_stacks *stks)
 {
-	long int	num;
-	int			sign;
 	const int	coeff[2] = {+1, -1};
+	long		num;
+	int			sign;
 
 	num = 0;
 	sign = 1;
@@ -69,18 +66,37 @@ void	parse_input(int argc, char *argv[], t_stacks *stks)
 	stks->b.size = get_list_size(stks->b.list);
 }
 
+static bool	is_in_int_range(long val)
+{
+	return ((val >= INT_MIN && val <= INT_MAX));
+}
+
+static bool	is_unique_val(t_node *node, t_node *stack)
+{
+	t_node	*node_ptr;
+
+	node_ptr = search_node_val(stack, node->val);
+	if (node_ptr == NULL)
+		return (true);
+	return (false);
+}
+
 void	validate_data(t_stacks *stks)
 {
-	t_node	*stk_ptr;
+	t_node	*node;
+	long	val;
+	bool	unique_val;
+	bool	val_in_int_range;
 
-	stk_ptr = stks->a.list;
-	while (stk_ptr)
+	node = stks->a.list;
+	while (node != NULL)
 	{
-		if (stk_ptr->val < INT_MIN || stk_ptr->val > INT_MAX \
-			|| search_val(stk_ptr->next, stk_ptr->val))
-		{
+		val = node->val;
+		unique_val = is_unique_val(node, node->next);
+		val_in_int_range = is_in_int_range(val);
+		if (unique_val == false || val_in_int_range == false)
 			throw_error(stks, true);
-		}
-		stk_ptr = stk_ptr->next;
+		node = node->next;
 	}
 }
+ 

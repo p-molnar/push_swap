@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   index_list.c                                       :+:    :+:            */
+/*   list_indexing.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 15:55:06 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 01:33:32 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/13 23:49:08 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 #include <list_ops.h>
 
-#include <stdio.h>
-
-int	index_of(t_node *lookup_val, t_node **arr, size_t arr_size)
+static int	index_of_node(t_node *lookup_val,
+			t_node **arr, unsigned int arr_size)
 {
 	size_t	i;
 
@@ -29,42 +28,42 @@ int	index_of(t_node *lookup_val, t_node **arr, size_t arr_size)
 	return (-1);
 }
 
-t_node	*get_available_node(t_node *stk, t_node **used_nodes, size_t size)
+static t_node	*get_available_node(t_node *stk,
+				t_node **used_nodes, unsigned int size)
 {
 	while (stk)
 	{
-		if (index_of(stk, used_nodes, size) == -1)
+		if (index_of_node(stk, used_nodes, size) == -1)
 			return (stk);
 		stk = stk->next;
 	}
 	return (stk);
 }
 
-// protect malloc !
-void	add_indexing(t_node *stk)
+void	add_indexing(t_stacks *stks)
 {
-	t_node	**used_nodes;
-	t_node	*min_node;
-	t_node	*tmp;
-	size_t	list_size;
-	size_t	i;
+	t_node			**used_nodes;
+	t_node			*min_node;
+	t_node			*stk;
+	unsigned int	i;
 
-	list_size = get_list_size(stk);
-	used_nodes = malloc(list_size * sizeof(t_node *));
-	tmp = stk;
+	used_nodes = malloc(stks->a.size * sizeof(t_node *));
+	if (used_nodes == NULL)
+		throw_error(stks, true);
+	stk = stks->a.list;
 	i = 0;
-	while (i != list_size)
+	while (stks->a.size != i)
 	{
 		min_node = get_available_node(stk, used_nodes, i);
 		while (stk)
 		{
-			if (index_of(stk, used_nodes, i) == -1
+			if (index_of_node(stk, used_nodes, i) == -1
 				&& stk->val < min_node->val)
 				min_node = stk;
 			stk = stk->next;
 		}
 		min_node->index = i;
 		used_nodes[i++] = min_node;
-		stk = tmp;
+		stk = stks->a.list;
 	}
 }

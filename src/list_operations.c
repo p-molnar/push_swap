@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 13:44:10 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/12 15:01:39 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/13 23:45:24 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,14 @@ t_node	*get_last_node(t_node *head)
 	return (tmp_ptr);
 }
 
-t_node	*get_penultimate_node(t_node *head)
-{
-	t_node	*last_node;
-
-	last_node = get_last_node(head);
-	if (last_node->prev == NULL)
-		return head;
-	return (last_node->prev);
-}
-
-t_node	*create_node(long int num)
+t_node	*create_node(long data)
 {
 	t_node	*node;
 
 	node = malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
-	node->val = num;
+	node->val = data;
 	node->index = -1;
 	node->is_sorted = false;
 	node->next = NULL;
@@ -67,21 +57,21 @@ void	append_list(t_node **head, t_node *new_node)
 	}
 }
 
-t_node	*search_val(t_node *head, long int val)
+t_node	*search_node_val(t_node *haystack, long needle)
 {
-	t_node	*tmp;
+	t_node	*node;
 
-	tmp = head;
-	while (tmp != NULL)
+	node = haystack;
+	while (node != NULL)
 	{
-		if (tmp->val == val)
-			return (tmp);
-		tmp = tmp->next;
+		if (node->val == needle)
+			return (node);
+		node = node->next;
 	}
 	return (NULL);
 }
 
-size_t	get_list_size(t_node *head)
+unsigned int	get_list_size(t_node *head)
 {
 	size_t	node_count;	
 
