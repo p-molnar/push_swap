@@ -6,14 +6,13 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/14 00:31:40 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/16 00:24:03 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <libft.h>
 #include <push_swap.h>
 #include <ps_custom_data_types.h>
 #include <ps_sorting_ops.h>
@@ -97,10 +96,10 @@ int	main(int argc, char *argv[])
 
 	stk_a = &stks.a;
 	stk_b = &stks.b;
-	stk_size = argc - 1;
 	init_stacks(&stks);
 	parse_input(argc, argv, &stks);
 	validate_data(&stks);
+	stk_size = stk_a->size;
 	// print_stacks(&stks);
 	if (stk_a->size <= 3)
 		sort_stack_of_size_3(&stk_a, stk_size, ASCENDING);

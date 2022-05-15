@@ -6,12 +6,13 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 21:13:24 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 22:11:24 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/14 19:35:14 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <push_swap.h>
+#include <libft.h>
 
 static long int	ft_atoi_modded(char **str, t_stacks *stks)
 {

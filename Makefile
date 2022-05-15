@@ -1,14 +1,20 @@
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address -g
-NAME		=	push_swap
 HEADER_FILES=	include
 
-SRC			=	main.c 					\
+FT_PRINTF	=	ft_printf
+FT_PRINTF_NAME = libftprintf.a
+
+GNL			=	get_next_line_utils.c	\
+				get_next_line.c
+
+PS_NAME		=	push_swap
+PS_SRC		=	main.c 					\
 				parse.c					\
 				error.c					\
 				list_operations.c		\
 				stack_operations.c		\
-				stack_operations_util.c	\
+				stack_operation_util.c	\
 				check_sorting.c			\
 				sorting_algo.c			\
 				sorting_algo_util.c		\
@@ -17,27 +23,51 @@ SRC			=	main.c 					\
 				stack_preparation_util.c\
 				free_nodes.c			\
 
-OBJ			=	$(addprefix obj/, $(SRC:.c=.o))
+CHECKER_SRC	=	checker.c
+CHECKER_NAME=	checker
 
-all:	$(NAME)
+PS_OBJ			=	$(addprefix obj/, $(PS_SRC:.c=.o))
+CHECKER_OBJ		=	$(addprefix obj/, $(CHECKER_SRC:.c=.o))
+GNL_OBJ			=	$(addprefix obj/, $(GNL:.c=.o))
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+all:	$(PS_NAME)
 
-obj/%.o:	src/%.c
+$(PS_NAME): $(FT_PRINTF_NAME) $(PS_OBJ)
+	$(CC) $(CFLAGS) $(PS_OBJ) $(FT_PRINTF_NAME) -o $(PS_NAME)
+
+obj/%.o:	sorter_src/%.c
+	mkdir -p obj
+	$(CC) $(CFLAGS) -I $(HEADER_FILES) -c $^ -o $@
+
+$(FT_PRINTF_NAME):
+	make $(FT_PRINTF_NAME) --directory=$(FT_PRINTF)
+	cp $(FT_PRINTF)/$(FT_PRINTF_NAME) .
+
+bonus: $(CHECKER_NAME)
+
+$(CHECKER_NAME):	$(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) $(PS_OBJ)	
+	$(CC) $(CFLAGS) $(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) $(addprefix obj/, check_sorting.o error.o free_nodes.o parse.o stack_operations.o stack_operation_util.o list_operations.o) -o $(CHECKER_NAME)
+
+obj/%.o:	*/%.c
 	mkdir -p obj
 	$(CC) $(CFLAGS) -I $(HEADER_FILES) -c $^ -o $@
 
 clean:
 	rm -f $(OBJ)
+	make clean --directory=$(FT_PRINTF)
 
 fclean:	clean
-	rm -rf $(NAME) obj
+	rm -rf $(PS_NAME) obj
+	rm -f $(FT_PRINTF_NAME)
+	rm -f $(CHECKER_NAME)
+	make fclean --directory=$(FT_PRINTF)
 
 re: fclean
 	make all
+	make all --directory=$(FT_PRINTF)
 
 norm:
-	norminette src/$(SRC)
+	norminette checker_src
+	norminette sorter_src
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus 

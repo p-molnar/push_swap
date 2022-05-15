@@ -12,6 +12,7 @@
 
 #include <unistd.h>
 #include <stdio.h>
+#include <ft_printf.h>
 
 #include <push_swap.h>
 #include <ps_sorting_ops.h>
@@ -28,9 +29,7 @@ void	push(t_stack **src, t_stack **dst)
 	if (popped_node->next != NULL)
 		popped_node->next->prev = popped_node;
 	update_stk_size(src, dst);
-	write(1, "r", 1);
-	write(1, (*dst)->name, 1);
-	write(1, "\n", 1);
+	ft_printf("p%c\n", (*dst)->name);
 }
 
 void	swap(t_stack **stk)
@@ -51,10 +50,7 @@ void	swap(t_stack **stk)
 	node_2->next = node_1;
 	node_2->prev = NULL;
 	(*stk)->list = node_2;
-	write(1, "s", 1);
-	write(1, (*stk)->name, 1);
-	write(1, (*stk)->name, 1);
-	write(1, "\n", 1);
+	ft_printf("s%c\n", (*stk)->name);
 }
 
 void	rotate(t_stack **stk, bool reverse)
@@ -73,8 +69,6 @@ void	rotate(t_stack **stk, bool reverse)
 	else if (reverse == false)
 		do_rotation(stk);
 	if (reverse == true)
-		write(1, "r", 1);
-	write(1, "r", 1);
-	write(1, (*stk)->name, 1);
-	write(1, "\n", 1);
+		ft_printf("r");
+	ft_printf("r%c\n", (*stk)->name);
 }

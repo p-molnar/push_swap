@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 10:29:52 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 23:46:33 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/14 20:58:37 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,3 +122,15 @@ void	sort_stack_of_size_3(t_stack **stk, size_t stk_size, int order)
 		sort_stack_of_size_3(stk, stk_size, order);
 	}
 }
+
+// void	brute_force(t_stacks *stks, int stk_size)
+// {
+// 	t_stack	*stk_a;
+// 	t_stack	*stk_b;
+
+// 	stk_a = &stks->a;
+// 	stk_b = &stks->b;
+// 	if (stks != NULL || stk_b->list != NULL)
+// 		return ;
+// 	push(stk_a, stk_b)
+// }

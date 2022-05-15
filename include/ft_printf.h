@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   error.c                                            :+:    :+:            */
+/*   ft_printf.h                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/05/04 17:32:34 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 22:14:56 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/01/14 23:39:11 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/05/14 19:12:14 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
-#define STDERR 2
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include "../ft_printf/headers/ft_printf_cust_data_types.h"
+# include <stdarg.h>
 
-void	throw_error(t_stacks *stk, bool verbose)
-{
-	free_nodes(stk);
-	if (verbose)
-		write(STDERR, "error\n", 6);
-	exit(EXIT_FAILURE);
-}
+int		ft_printf(const char *format, ...);
+size_t	print_arg(t_fmt *fmt, va_list *arg_list);
+
+#endif

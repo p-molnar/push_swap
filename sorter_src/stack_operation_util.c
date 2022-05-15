@@ -6,11 +6,11 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/14 00:28:53 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/14 00:30:27 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/14 19:13:33 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ps_custom_data_types.h>
+#include <push_swap.h>
 
 void	update_stk_size(t_stack **stk_1, t_stack **stk_2)
 {
