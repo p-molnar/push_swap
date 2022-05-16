@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ps_sorting_ops.h                                   :+:    :+:            */
+/*   rev_rotate_ops.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 11:19:22 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/17 01:07:41 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/05/17 01:01:12 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/05/17 01:05:37 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_SORTING_OPS_H
-# define PS_SORTING_OPS_H
+#include <push_swap.h>
+#include <ps_sorting_ops.h>
 
-# include <push_swap.h>
+void	rra(t_stacks **stks)
+{
+	t_stack	*stk_a;
 
-void	swap(t_stack **stk, bool verbose);
-void	push(t_stack **src, t_stack **dst, bool verbose);
-void	rotate(t_stack **stk, bool reverse, bool verbose);
+	stk_a = &(*stks)->a;
+	rotate(&stk_a, true, false);
+}
 
-#endif
+void	rrb(t_stacks **stks)
+{
+	t_stack	*stk_b;
+
+	stk_b = &(*stks)->b;
+	rotate(&stk_b, true, false);
+}
+
+void	rrr(t_stacks **stks)
+{
+	rra(stks);
+	rrb(stks);
+}

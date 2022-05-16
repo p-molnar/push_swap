@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sorting_algo_helper.c                              :+:    :+:            */
+/*   sorting_algo_util.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 22:29:29 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 22:37:20 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/17 00:28:47 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	move_node_to_top(t_stack **stk_a, t_node *lookup)
 	while (ptr != lookup)
 	{
 		if (node_closer_to_btm)
-			rotate(stk_a, true);
+			rotate(stk_a, true, true);
 		else
-			rotate(stk_a, false);
+			rotate(stk_a, false, true);
 		ptr = (*stk_a)->list;
 	}
 }

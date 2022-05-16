@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 10:29:52 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/14 20:58:37 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/17 00:30:02 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	retain_sort(t_stacks *stks, int stk_size)
 			// 	printf("min_node: %ld\n", node->val);
 			move_node_to_top(&stk_b, node);
 			move_node_to_top(&stk_a, get_matching_node(stk_a, node));
-			push(&stk_b, &stk_a);
+			push(&stk_b, &stk_a, true);
 			// print_stacks(stks);
 		}
 		move_node_to_top(&stk_a, get_extreme_val(stk_a->list, MIN));
@@ -113,12 +113,12 @@ void	sort_stack_of_size_3(t_stack **stk, size_t stk_size, int order)
 		if (order * top->val > order * mid->val)
 		{
 			if (order * top->val > order * btm->val)
-				rotate(stk, false);
+				rotate(stk, false, true);
 			else if (order * top->val < order * btm->val)
-				swap(stk);
+				swap(stk, true);
 		}
 		else if (order * top->val < order * mid->val)
-			rotate(stk, true);
+			rotate(stk, true, true);
 		sort_stack_of_size_3(stk, stk_size, order);
 	}
 }

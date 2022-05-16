@@ -23,7 +23,12 @@ PS_SRC		=	main.c 					\
 				stack_preparation_util.c\
 				free_nodes.c			\
 
-CHECKER_SRC	=	checker.c
+CHECKER_SRC	=	checker.c				\
+				push_ops.c				\
+				rev_rotate_ops.c		\
+				rotate_ops.c			\
+				swap_ops.c				\
+
 CHECKER_NAME=	checker
 
 PS_OBJ			=	$(addprefix obj/, $(PS_SRC:.c=.o))
@@ -53,8 +58,8 @@ obj/%.o:	*/%.c
 	$(CC) $(CFLAGS) -I $(HEADER_FILES) -c $^ -o $@
 
 clean:
-	rm -f $(OBJ)
 	make clean --directory=$(FT_PRINTF)
+	rm -f $(OBJ)
 
 fclean:	clean
 	rm -rf $(PS_NAME) obj
@@ -63,8 +68,8 @@ fclean:	clean
 	make fclean --directory=$(FT_PRINTF)
 
 re: fclean
+	make re --directory=$(FT_PRINTF)
 	make all
-	make all --directory=$(FT_PRINTF)
 
 norm:
 	norminette checker_src

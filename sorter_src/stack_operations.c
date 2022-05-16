@@ -17,7 +17,7 @@
 #include <push_swap.h>
 #include <ps_sorting_ops.h>
 
-void	push(t_stack **src, t_stack **dst)
+void	push(t_stack **src, t_stack **dst, bool verbose)
 {
 	t_node	*popped_node;
 
@@ -29,10 +29,11 @@ void	push(t_stack **src, t_stack **dst)
 	if (popped_node->next != NULL)
 		popped_node->next->prev = popped_node;
 	update_stk_size(src, dst);
-	ft_printf("p%c\n", (*dst)->name);
+	if (verbose)
+		ft_printf("p%c\n", (*dst)->name);
 }
 
-void	swap(t_stack **stk)
+void	swap(t_stack **stk, bool verbose)
 {
 	t_node	*node_1;
 	t_node	*node_2;
@@ -50,10 +51,11 @@ void	swap(t_stack **stk)
 	node_2->next = node_1;
 	node_2->prev = NULL;
 	(*stk)->list = node_2;
-	ft_printf("s%c\n", (*stk)->name);
+	if (verbose)
+		ft_printf("s%c\n", (*stk)->name);
 }
 
-void	rotate(t_stack **stk, bool reverse)
+void	rotate(t_stack **stk, bool reverse, bool verbose)
 {
 	t_node	*node_1;
 	t_node	*node_n;
@@ -68,6 +70,8 @@ void	rotate(t_stack **stk, bool reverse)
 		do_reverse_rotation(stk);
 	else if (reverse == false)
 		do_rotation(stk);
+	if (verbose == false)
+		return ;
 	if (reverse == true)
 		ft_printf("r");
 	ft_printf("r%c\n", (*stk)->name);

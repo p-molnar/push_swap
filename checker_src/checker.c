@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/16 00:32:51 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/17 01:03:02 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char *argv[])
 	while (cmd)
 	{
 		ft_printf("%s", cmd);
-		exec_sorting_command(cmd);
+		// exec_sorting_command(cmd);
 		free(cmd);
 		cmd = get_next_line(STDIN);
 	}
