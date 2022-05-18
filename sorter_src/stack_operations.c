@@ -61,11 +61,11 @@ void	rotate(t_stack **stk, bool reverse, bool verbose)
 	t_node	*node_n;
 	t_node	*node_n_1;
 
+	if (stk == NULL || (*stk)->list == NULL || (*stk)->list->next == NULL)
+		return ;
 	node_1 = (*stk)->list;
 	node_n = get_last_node((*stk)->list);
 	node_n_1 = node_n->prev;
-	if (stk == NULL || (*stk)->list == NULL || (*stk)->list->next == NULL)
-		return ;
 	if (reverse == true)
 		do_reverse_rotation(stk);
 	else if (reverse == false)

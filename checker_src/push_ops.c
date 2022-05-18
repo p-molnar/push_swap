@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/17 00:51:25 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/17 01:05:13 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/18 14:56:08 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	pa(t_stacks **stks)
 
 	stk_a = &(*stks)->a;
 	stk_b = &(*stks)->b;
-	push(&stk_a, &stk_b, false);
+	push(&stk_b, &stk_a, false);
 }
 
 void	pb(t_stacks **stks)
@@ -30,5 +30,5 @@ void	pb(t_stacks **stks)
 
 	stk_a = &(*stks)->a;
 	stk_b = &(*stks)->b;
-	push(&stk_b, &stk_a, false);
+	push(&stk_a, &stk_b, false);
 }

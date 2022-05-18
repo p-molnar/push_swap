@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/12 14:11:04 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 23:47:05 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/18 15:47:29 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	mark_nodes_to_be_pushed(t_node *start_node, t_node *stk_top)
 
 	curr_max_val = start_node->val;
 	start_node->is_sorted = true;
-	// printf("val: %ld, is_sorted: %d\n", start_node->val, start_node->is_sorted);
 	node = start_node->next;
 	if (node == NULL)
 		node = stk_top;
@@ -41,7 +40,6 @@ static void	mark_nodes_to_be_pushed(t_node *start_node, t_node *stk_top)
 			curr_max_val = node->val;
 			node->is_sorted = true;
 		}
-		// printf("val: %ld, is_sorted: %d\n", node->val, node->is_sorted);
 		node = node->next;
 		if (node == NULL)
 			node = stk_top;
@@ -61,11 +59,9 @@ static t_node	*find_longest_coherent_list(t_node *stk)
 	while (ptr)
 	{
 		curr_ordered_el_count = get_ordered_el_count(ptr, stk);
-		// printf("curr_ord_el_c: %u\n", curr_ordered_el_count);
-		// if (curr_ordered_el_count > max_ordered_el_count)
 		if (curr_ordered_el_count > max_ordered_el_count
 			|| (curr_ordered_el_count == max_ordered_el_count
-			&& ptr->index < max_node->index))
+				&& ptr->index < max_node->index))
 		{
 			max_node = ptr;
 			max_ordered_el_count = curr_ordered_el_count;

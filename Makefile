@@ -35,7 +35,7 @@ PS_OBJ			=	$(addprefix obj/, $(PS_SRC:.c=.o))
 CHECKER_OBJ		=	$(addprefix obj/, $(CHECKER_SRC:.c=.o))
 GNL_OBJ			=	$(addprefix obj/, $(GNL:.c=.o))
 
-all:	$(PS_NAME)
+all:	$(PS_NAME) $(CHECKER_NAME)
 
 $(PS_NAME): $(FT_PRINTF_NAME) $(PS_OBJ)
 	$(CC) $(CFLAGS) $(PS_OBJ) $(FT_PRINTF_NAME) -o $(PS_NAME)
@@ -55,7 +55,7 @@ $(CHECKER_NAME):	$(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) $(PS_OBJ)
 
 obj/%.o:	*/%.c
 	mkdir -p obj
-	$(CC) $(CFLAGS) -I $(HEADER_FILES) -c $^ -o $@
+	$(CC) -D BUFFER_SIZE=100 $(CFLAGS) -I $(HEADER_FILES) -c $^ -o $@
 
 clean:
 	make clean --directory=$(FT_PRINTF)

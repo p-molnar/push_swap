@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 22:29:29 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/17 00:28:47 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/19 01:08:12 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,24 @@ unsigned int	get_min_move_count(t_node *node, t_stack *stk)
 	return (move_count);
 }
 
-void	move_node_to_top(t_stack **stk_a, t_node *lookup)
+void	move_node_to_top(t_stack **stk, t_node *node)
 {
 	unsigned int	node_pos;
 	bool			node_closer_to_btm;
 	t_node			*ptr;
 
-	ptr = (*stk_a)->list;
-	if (lookup == NULL)
+	ptr = (*stk)->list;
+	if (node == NULL)
 		return ;
-	node_pos = get_node_position((*stk_a)->list, lookup);
-	node_closer_to_btm = node_pos > (*stk_a)->size / 2;
-	while (ptr != lookup)
+	node_pos = get_node_position((*stk)->list, node);
+	node_closer_to_btm = node_pos > (*stk)->size / 2;
+	while (ptr != node)
 	{
 		if (node_closer_to_btm)
-			rotate(stk_a, true, true);
+			rotate(stk, true, true);
 		else
-			rotate(stk_a, false, true);
-		ptr = (*stk_a)->list;
+			rotate(stk, false, true);
+		ptr = (*stk)->list;
 	}
 }
 

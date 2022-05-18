@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 23:02:51 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/17 00:34:53 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/18 15:45:53 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ void	push_closest_marked_node(t_stacks *stks)
 		while (stk_a->list->is_sorted != false)
 			rotate(&stk_a, true, true);
 	}
-	// print_stacks(stks);
 	push(&stk_a, &stk_b, true);
-	// print_stacks(stks);
 }
 
 bool	stk_has_marked_node(t_node *stk)
