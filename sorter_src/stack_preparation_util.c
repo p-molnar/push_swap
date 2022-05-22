@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 23:02:51 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/18 15:45:53 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/22 10:59:34 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ unsigned int	get_false_node_position(t_node *stk, int lookup)
 	return (last);
 }
 
+// original
 void	push_closest_marked_node(t_stacks *stks)
 {
 	t_stack			*stk_a;
@@ -61,13 +62,41 @@ void	push_closest_marked_node(t_stacks *stks)
 	push(&stk_a, &stk_b, true);
 }
 
+// void	push_closest_marked_node(t_stacks *stks)
+// {
+// 	t_stack	*stk_a;
+// 	t_stack	*stk_b;
+// 	t_node	*min_node;
+// 	t_node	*ptr;
+// 	long	min_val;
+
+// 	stk_a = &stks->a;
+// 	stk_b = &stks->b;
+// 	ptr = stk_a->list;
+// 	min_val = (unsigned int) -1;
+// 	while (ptr)
+// 	{
+// 		if (ptr->is_sorted == false && ptr->val < min_val)
+// 		{
+// 			min_node = ptr;
+// 			min_val = min_node->val;
+// 		}
+// 		ptr = ptr->next;
+// 	}
+// 	move_node_to_top(&stk_a, min_node, true);
+// 	push(&stk_a, &stk_b, true);
+// }
+
 bool	stk_has_marked_node(t_node *stk)
 {
-	while (stk)
+	t_node	*ptr;
+
+	ptr = stk;
+	while (ptr)
 	{
-		if (stk->is_sorted == false)
+		if (ptr->is_sorted == false)
 			return (true);
-		stk = stk->next;
+		ptr = ptr->next;
 	}
 	return (false);
 }
@@ -77,23 +106,24 @@ unsigned int	get_ordered_el_count(t_node *node, t_node *stk_top)
 	const t_node	*start_node;
 	unsigned int	ordered_el_count;
 	int				curr_max_val;
+	t_node			*tmp_ptr;
 
 	start_node = node;
 	ordered_el_count = 0;
 	curr_max_val = node->val;
-	node = node->next;
-	if (node == NULL)
-		node = stk_top;
-	while (node != start_node)
+	tmp_ptr = node->next;
+	if (tmp_ptr == NULL)
+		tmp_ptr = stk_top;
+	while (tmp_ptr->val != start_node->val)
 	{
-		if (node->val > curr_max_val)
+		if (tmp_ptr->val > curr_max_val)
 		{
-			curr_max_val = node->val;
+			curr_max_val = tmp_ptr->val;
 			ordered_el_count++;
 		}
-		node = node->next;
-		if (node == NULL)
-			node = stk_top;
+		tmp_ptr = tmp_ptr->next;
+		if (tmp_ptr == NULL)
+			tmp_ptr = stk_top;
 	}
 	return (ordered_el_count);
 }

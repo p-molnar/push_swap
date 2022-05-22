@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/19 01:20:13 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/20 01:37:33 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,6 @@ void	print_stacks_2(t_stack *stk_1, t_stack *stk_2)
 	printf("-----------+-----------\n");
 }
 
-static void	init_stacks(t_stacks *stks)
-{
-	stks->a.list = NULL;
-	stks->a.name = 'a';
-	stks->b.list = NULL;
-	stks->b.name = 'b';
-}
-
 int	main(int argc, char *argv[])
 {
 	unsigned int	stk_size;
@@ -101,10 +93,11 @@ int	main(int argc, char *argv[])
 	validate_data(&stks);
 	stk_size = stk_a->size;
 	// print_stacks(&stks);
-	if (stk_a->size <= 3)
-		sort_stack_of_size_3(&stk_a, stk_size, ASCENDING);
-	else
-		retain_sort(&stks, stk_size);
+	// if (stk_a->size <= 3)
+	// 	sort_stack_of_size_3(&stk_a, stk_size, ASCENDING);
+	// else
+	// 	retain_sort(&stks, stk_size);
+	retain_sort(&stks, stk_size);
 	free_nodes(&stks);
 	// print_stacks(&stks);
 	// while (1)

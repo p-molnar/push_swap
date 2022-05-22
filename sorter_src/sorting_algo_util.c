@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 22:29:29 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/19 01:08:12 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/19 22:36:27 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ unsigned int	get_min_move_count(t_node *node, t_stack *stk)
 	return (move_count);
 }
 
-void	move_node_to_top(t_stack **stk, t_node *node)
+void	move_node_to_top(t_stack **stk, t_node *node, bool verbose)
 {
 	unsigned int	node_pos;
 	bool			node_closer_to_btm;
@@ -49,9 +49,9 @@ void	move_node_to_top(t_stack **stk, t_node *node)
 	while (ptr != node)
 	{
 		if (node_closer_to_btm)
-			rotate(stk, true, true);
+			rotate(stk, true, verbose);
 		else
-			rotate(stk, false, true);
+			rotate(stk, false, verbose);
 		ptr = (*stk)->list;
 	}
 }

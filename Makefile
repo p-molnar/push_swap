@@ -1,5 +1,6 @@
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address -g
+# CFLAGS		=	-fsanitize=address -g
 HEADER_FILES=	include
 
 FT_PRINTF	=	ft_printf
@@ -22,6 +23,7 @@ PS_SRC		=	main.c 					\
 				stack_preparation.c		\
 				stack_preparation_util.c\
 				free_nodes.c			\
+				fastest_sorting_path.c
 
 CHECKER_SRC	=	checker.c				\
 				push_ops.c				\

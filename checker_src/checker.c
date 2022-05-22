@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/18 15:13:51 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/19 13:50:50 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@ void	exec_sorting_cmd(char *cmd, t_stacks **stks)
 		}
 		i++;
 	}
-}
-
-static void	init_stacks(t_stacks *stks)
-{
-	stks->a.list = NULL;
-	stks->a.name = 'a';
-	stks->b.list = NULL;
-	stks->b.name = 'b';
 }
 
 int	main(int argc, char *argv[])

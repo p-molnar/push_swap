@@ -29,6 +29,7 @@ void	push(t_stack **src, t_stack **dst, bool verbose)
 	if (popped_node->next != NULL)
 		popped_node->next->prev = popped_node;
 	update_stk_size(src, dst);
+	(*src)->total_op_count++;
 	if (verbose)
 		ft_printf("p%c\n", (*dst)->name);
 }
@@ -51,6 +52,7 @@ void	swap(t_stack **stk, bool verbose)
 	node_2->next = node_1;
 	node_2->prev = NULL;
 	(*stk)->list = node_2;
+	(*stk)->total_op_count++;
 	if (verbose)
 		ft_printf("s%c\n", (*stk)->name);
 }
@@ -70,6 +72,7 @@ void	rotate(t_stack **stk, bool reverse, bool verbose)
 		do_reverse_rotation(stk);
 	else if (reverse == false)
 		do_rotation(stk);
+	(*stk)->total_op_count++;
 	if (verbose == false)
 		return ;
 	if (reverse == true)

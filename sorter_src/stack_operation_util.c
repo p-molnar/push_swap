@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/14 00:28:53 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/14 19:13:33 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/20 12:46:15 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,14 @@ void	do_rotation(t_stack **stk)
 	node_1->next = NULL;
 	node_n->next = node_1;
 	node_1->prev = node_n;
+}
+
+void	init_stacks(t_stacks *stks)
+{
+	stks->a.list = NULL;
+	stks->a.name = 'a';
+	stks->a.total_op_count = 0;
+	stks->b.list = NULL;
+	stks->b.name = 'b';
+	stks->b.total_op_count = 0;
 }

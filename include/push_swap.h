@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/14 00:42:13 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/22 10:33:28 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ enum {
 	MIN = -1,
 	MAX = 1,
 };
+
+// fastest_sorting_path.c
+t_stacks	*duplicate_stks(t_stack *stk_a, t_stack *stk_b);
+unsigned int	get_false_node_position(t_node *stk, int lookup);
+
+// main.c
+void	init_stacks(t_stacks *stks);
+
+// sorting_algo.c
+void	get_fastest_sorting_combo(t_stack *stk_a, t_stack *stk_b);
+t_node	*get_matching_node(t_stack *stk, t_node *node);
+
 // check_sorting.c
 bool			is_stack_sorted(t_node *stk, size_t list_size, int sorting);
 
@@ -42,7 +54,7 @@ void			validate_data(t_stacks *stks);
 void			throw_error(t_stacks *stk, bool verbose);
 
 // free_nodes.c
-void			free_nodes(t_stacks *stk);
+void			free_nodes(t_stacks *stks);
 
 t_node			*get_extreme_val(t_node *stk, int extreme_type);
 
@@ -61,7 +73,7 @@ void			print_stacks_2(t_stack *stk_1, t_stack *stk_2);
 t_node			*get_extreme_val(t_node *stk, int extreme_type);
 unsigned int	get_min_move_count(t_node *node, t_stack *stk);
 unsigned int	get_node_position(t_node *stk, t_node *node);
-void			move_node_to_top(t_stack **stk_a, t_node *lookup);
+void			move_node_to_top(t_stack **stk, t_node *node, bool verbose);
 
 // stack_preparation.c
 void			prepare_stacks_for_sorting(t_stacks *stks);
