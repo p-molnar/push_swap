@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/22 10:33:28 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/31 23:58:33 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ enum {
 
 // fastest_sorting_path.c
 t_stacks	*duplicate_stks(t_stack *stk_a, t_stack *stk_b);
-unsigned int	get_false_node_position(t_node *stk, int lookup);
+size_t		get_false_node_position(t_node *stk, int lookup);
 
 // main.c
-void	init_stacks(t_stacks *stks);
+void		init_stacks(t_stacks *stks);
 
 // sorting_algo.c
-void	get_fastest_sorting_combo(t_stack *stk_a, t_stack *stk_b);
-t_node	*get_matching_node(t_stack *stk, t_node *node);
+void		get_fastest_sorting_combo(t_stack *stk_a, t_stack *stk_b);
+t_node		*get_matching_node(t_stack *stk, t_node *node);
 
 // check_sorting.c
-bool			is_stack_sorted(t_node *stk, size_t list_size, int sorting);
+bool		is_stack_sorted(t_node *stk, size_t list_size, int sorting);
 
 // parse.c
 void			parse_input(int argc, char *argv[], t_stacks *stk);
@@ -58,12 +58,10 @@ void			free_nodes(t_stacks *stks);
 
 t_node			*get_extreme_val(t_node *stk, int extreme_type);
 
-// algo.c
-void			sort_stack_of_size_3(t_stack **stk, size_t stk_size, int order);
-void			retain_sort(t_stacks *stks, int stk_size);
+void			sort_stack(t_stacks *stks, size_t stk_size);
 
 // index_list.c
-void			add_indexing(t_stacks *stks);
+void			index_list(t_stacks *stks);
 
 // util.c
 void			print_stacks(t_stacks *stk);
@@ -76,7 +74,7 @@ unsigned int	get_node_position(t_node *stk, t_node *node);
 void			move_node_to_top(t_stack **stk, t_node *node, bool verbose);
 
 // stack_preparation.c
-void			prepare_stacks_for_sorting(t_stacks *stks);
+void			separate_stacks(t_stacks *stks);
 
 // stack_preparation_util.c
 bool			stk_has_marked_node(t_node *stk);

@@ -1,6 +1,6 @@
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address -g
-# CFLAGS		=	-fsanitize=address -g
+# CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address -g
+CFLAGS		=	-fsanitize=address -g
 HEADER_FILES=	include
 
 FT_PRINTF	=	ft_printf
@@ -11,7 +11,7 @@ GNL			=	get_next_line_utils.c	\
 
 PS_NAME		=	push_swap
 PS_SRC		=	main.c 					\
-				parse.c					\
+				input.c					\
 				error.c					\
 				list_operations.c		\
 				stack_operations.c		\

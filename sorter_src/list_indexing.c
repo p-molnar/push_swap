@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 15:55:06 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 23:49:08 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/31 23:58:33 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static t_node	*get_available_node(t_node *stk,
 	return (stk);
 }
 
-void	add_indexing(t_stacks *stks)
+void	index_list(t_stacks *stks)
 {
 	t_node			**used_nodes;
 	t_node			*min_node;

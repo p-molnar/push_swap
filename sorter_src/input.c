@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 21:13:24 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/19 13:53:32 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/31 23:50:00 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,21 @@ static long int	ft_atoi_modded(char **str, t_stacks *stks)
 	return (num * sign);
 }
 
+static bool	is_in_int_range(long val)
+{
+	return ((val >= INT_MIN && val <= INT_MAX));
+}
+
+static bool	is_unique_val(t_node *node, t_node *stack)
+{
+	t_node	*node_ptr;
+
+	node_ptr = search_node_val(stack, node->val);
+	if (node_ptr == NULL)
+		return (true);
+	return (false);
+}
+
 void	parse_input(int argc, char *argv[], t_stacks *stks)
 {
 	long int	parsed_val;
@@ -65,21 +80,6 @@ void	parse_input(int argc, char *argv[], t_stacks *stks)
 	}
 	stks->a.size = get_list_size(stks->a.list);
 	stks->b.size = get_list_size(stks->b.list);
-}
-
-static bool	is_in_int_range(long val)
-{
-	return ((val >= INT_MIN && val <= INT_MAX));
-}
-
-static bool	is_unique_val(t_node *node, t_node *stack)
-{
-	t_node	*node_ptr;
-
-	node_ptr = search_node_val(stack, node->val);
-	if (node_ptr == NULL)
-		return (true);
-	return (false);
 }
 
 void	validate_data(t_stacks *stks)

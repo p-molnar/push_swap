@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/20 01:37:33 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/05/31 23:52:25 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,77 +81,16 @@ void	print_stacks_2(t_stack *stk_1, t_stack *stk_2)
 
 int	main(int argc, char *argv[])
 {
-	unsigned int	stk_size;
-	t_stacks		stks;
-	t_stack			*stk_a;
-	t_stack			*stk_b;
+	size_t		stk_size;
+	t_stacks	stks;
+	t_stack		*stk_a;
 
 	stk_a = &stks.a;
-	stk_b = &stks.b;
 	init_stacks(&stks);
 	parse_input(argc, argv, &stks);
 	validate_data(&stks);
 	stk_size = stk_a->size;
-	// print_stacks(&stks);
-	// if (stk_a->size <= 3)
-	// 	sort_stack_of_size_3(&stk_a, stk_size, ASCENDING);
-	// else
-	// 	retain_sort(&stks, stk_size);
-	retain_sort(&stks, stk_size);
+	sort_stack(&stks, stk_size);
 	free_nodes(&stks);
-	// print_stacks(&stks);
-	// while (1)
-	// {
-	// 	if (rand() % 2)
-	// 	{
-	// 		if (rand() % 2)
-	// 			rotate(&stk_a, true);
-	// 		else
-	// 		{
-	// 			if (rand() % 2)
-	// 				rotate(&stk_a, false);
-	// 			else
-	// 			{
-	// 				if (rand() % 2)
-	// 					swap(&stk_a);
-	// 				else
-	// 					swap(&stk_b);
-	// 			}	
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		if (rand() % 2)
-	// 			rotate(&stk_b, true);
-	// 		else	
-	// 		{
-	// 			if (rand() % 2)
-	// 				rotate(&stk_b, false);
-	// 			else
-	// 			{
-	// 				if (rand() % 2)
-	// 					push(&stk_a, &stk_b);
-	// 				else
-	// 					push(&stk_b, &stk_a);
-	// 			}	
-	// 		}
-	// 	}
-	// 	sleep(1);
-	// 	print_stacks(&stks);
-	// }
-	// swap(&stk_a);
-	// print_stacks(&stks);
-	// swap(&stk_a);
-	// print_stacks(&stks);
-	// swap(&stk_a);
-	// print_stacks(&stks);
-	// stk_a.a.size = get_list_size(stk.a.sllist);
-	// print_stacks(&stk);
-	// add_indexing(stk.a.sllist);
-	// print_stacks(&stk);
-	// t_stk	*stk_a = &stk.a;
-	// t_stk	*stk_b = &stk.b;
-	// exec_suitable_sorting(&stk);
-	// print_stacks(stk_a, stk_b);
 	return (EXIT_SUCCESS);
 }
