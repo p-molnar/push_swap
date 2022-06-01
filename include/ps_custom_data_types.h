@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 19:46:00 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/20 12:43:58 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/01 13:28:25 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef struct s_node
 typedef struct s_stack
 {
 	t_node			*list;
-	unsigned int	size;
+	size_t			size;
 	char			name;
-	unsigned int	total_op_count;
+	size_t			total_op_count;
 
 }	t_stack;
 

@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/04 19:05:41 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/18 15:15:24 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/01 16:08:47 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ double			ft_atof(const char *str);
 size_t			ft_count(char *s, char c);
 size_t			ft_get_num_len(long long n);
 char			*ft_reverse_str(char *str);
+int				ft_max_i(size_t arg_count, ...);
+int				ft_min_i(size_t arg_count, ...);
+double			ft_max_f(size_t arg_count, ...);
+double			ft_min_f(size_t arg_count, ...);
 
 // 	Part 1 - Libc functions
 int				ft_isalpha(int c);
@@ -63,7 +67,7 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n);
 char			*ft_strnstr(const char *haystack, const char *needle, \
 							size_t len);
 int				ft_atoi(const char *str);
-void			*gnl_calloc(size_t count, size_t size);
+void			*ft_calloc(size_t count, size_t size);
 char			*ft_strdup(const char *s1);
 
 //	Part 2 - Additional functions

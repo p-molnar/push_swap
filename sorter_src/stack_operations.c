@@ -79,3 +79,15 @@ void	rotate(t_stack **stk, bool reverse, bool verbose)
 		ft_printf("r");
 	ft_printf("r%c\n", (*stk)->name);
 }
+
+void	rotate_both(t_stack **stk_a, t_stack **stk_b,
+		bool reverse, bool verbose)
+{
+	rotate(stk_a, reverse, NO_VERBOSE);
+	rotate(stk_b, reverse, NO_VERBOSE);
+	if (verbose == false)
+		return ;
+	if (reverse == true)
+		ft_printf("r");
+	ft_printf("rr\n");
+}

@@ -6,17 +6,17 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 23:02:51 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/22 10:59:34 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/01 12:04:05 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-unsigned int	get_false_node_position(t_node *stk, int lookup)
+size_t	get_false_node_position(t_node *stk, int lookup)
 {
-	unsigned int	counter;
-	unsigned int	first;
-	unsigned int	last;
+	size_t	counter;
+	size_t	first;
+	size_t	last;
 
 	counter = 0;
 	first = 0;
@@ -101,7 +101,7 @@ bool	stk_has_marked_node(t_node *stk)
 	return (false);
 }
 
-unsigned int	get_ordered_el_count(t_node *node, t_node *stk_top)
+size_t	get_ordered_el_count(t_node *node, t_node *stk_top)
 {
 	const t_node	*start_node;
 	unsigned int	ordered_el_count;

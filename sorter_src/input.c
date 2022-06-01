@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parse.c                                            :+:    :+:            */
+/*   input.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 21:13:24 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/31 23:50:00 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/01 11:10:54 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ static long int	ft_atoi_modded(char **str, t_stacks *stks)
 		(*str)++;
 	}
 	if (!ft_isdigit(**str))
-		throw_error(stks, true);
+		error(stks, VERBOSE);
 	while (**str && ft_isdigit(**str))
 	{
 		num = 10 * num + (**str - '0');
 		(*str)++;
 	}
 	if (**str != ' ' && **str != '\0')
-		throw_error(stks, true);
+		error(stks, VERBOSE);
 	return (num * sign);
 }
 
@@ -62,13 +62,13 @@ void	parse_input(int argc, char *argv[], t_stacks *stks)
 	t_node		*new_node;
 
 	if (argc < 2)
-		throw_error(stks, false);
+		error(stks, NO_VERBOSE);
 	i = 1;
 	while (i < (size_t) argc)
 	{
 		curr_arg = argv[i];
 		if (curr_arg[ft_strlen(curr_arg) - 1] == ' ')
-			throw_error(stks, true);
+			error(stks, VERBOSE);
 		while (*curr_arg)
 		{
 			parsed_val = ft_atoi_modded(&curr_arg, stks);
@@ -82,7 +82,7 @@ void	parse_input(int argc, char *argv[], t_stacks *stks)
 	stks->b.size = get_list_size(stks->b.list);
 }
 
-void	validate_data(t_stacks *stks)
+void	validate_input(t_stacks *stks)
 {
 	t_node	*node;
 	long	val;
@@ -96,7 +96,7 @@ void	validate_data(t_stacks *stks)
 		unique_val = is_unique_val(node, node->next);
 		val_in_int_range = is_in_int_range(val);
 		if (unique_val == false || val_in_int_range == false)
-			throw_error(stks, true);
+			error(stks, VERBOSE);
 		node = node->next;
 	}
 }

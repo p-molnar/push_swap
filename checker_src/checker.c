@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/19 13:50:50 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/01 10:58:04 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int argc, char *argv[])
 	stk_a = &stks.a;
 	init_stacks(&stks);
 	parse_input(argc, argv, &stks);
-	validate_data(&stks);
+	validate_input(&stks);
 	initial_stk_size = stk_a->size;
 	cmd = get_next_line(STDIN);
 	while (cmd)

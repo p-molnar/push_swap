@@ -12,16 +12,16 @@
 
 #include <push_swap.h>
 
-static void	push_marked_nodes(t_stacks *stks)
-{
-	t_stack		*stk_a;
-	t_stack		*stk_b;
+// static void	push_marked_nodes(t_stacks *stks)
+// {
+// 	t_stack		*stk_a;
+// 	t_stack		*stk_b;
 
-	stk_a = &stks->a;
-	stk_b = &stks->b;
-	while (stk_has_marked_node(stk_a->list))
-		push_closest_marked_node(stks);
-}
+// 	stk_a = &stks->a;
+// 	stk_b = &stks->b;
+// 	while (stk_has_marked_node(stk_a->list))
+// 		push_closest_marked_node(stks);
+// }
 
 static void	mark_unordered_nodes(t_node *start_node, t_node *stk_top)
 {
@@ -73,14 +73,53 @@ static t_node	*find_longest_ordered_list_head(t_node *stk)
 	return (max_node);
 }
 
+bool	is_swap_beneficial(t_stack *stk)
+{
+	t_node 	*ordered_list_head;
+	size_t	ordered_node_count;
+
+	ordered_list_head = find_longest_ordered_list_head(stk->list);
+	ordered_node_count = get_ordered_el_count(ordered_list_head, stk->list);
+	swap(&stk, false);
+	stk->total_op_count -= 1;
+	ordered_list_head = find_longest_ordered_list_head(stk->list);
+	if (get_ordered_el_count(ordered_list_head, stk->list) > ordered_node_count)
+	{
+		swap(&stk, false);
+		stk->total_op_count -= 1;
+		return (true);
+	}
+	else
+	{
+		swap(&stk, false);
+		stk->total_op_count -= 1;
+		return (false);
+	}
+}
+
 void	separate_stacks(t_stacks *stks)
 {
-	t_node	*stk_a;
 	t_node	*ordered_list_head;
+	t_stack	*stk_a;
+	t_stack	*stk_b;
 
-	stk_a = stks->a.list;
+	stk_a = &stks->a;
+	stk_b = &stks->b;
+	ordered_list_head = find_longest_ordered_list_head(stk_a->list);
 	index_list(stks);
-	ordered_list_head = find_longest_ordered_list_head(stk_a);
-	mark_unordered_nodes(ordered_list_head, stk_a);
-	push_marked_nodes(stks);
+	mark_unordered_nodes(ordered_list_head, stk_a->list);
+	while (stk_has_marked_node(stk_a->list) == true)
+	{
+		if (is_swap_beneficial(&stks->a) == true)
+		{
+			swap(&stk_a, true);
+			index_list(stks);
+			ordered_list_head = find_longest_ordered_list_head(stk_a->list);
+			mark_unordered_nodes(ordered_list_head, stk_a->list);
+		}
+		else if (stk_a->list->is_sorted == false)
+			push(&stk_a, &stk_b, true);
+		else
+			rotate(&stk_a, false, true);
+	}
 }

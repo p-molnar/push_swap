@@ -6,13 +6,13 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 22:29:29 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/19 22:36:27 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/01 14:47:51 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-unsigned int	get_node_position(t_node *stk, t_node *node)
+unsigned int	get_node_index(t_node *stk, t_node *node)
 {
 	size_t	i;
 
@@ -25,14 +25,14 @@ unsigned int	get_node_position(t_node *stk, t_node *node)
 	return (i);
 }
 
-unsigned int	get_min_move_count(t_node *node, t_stack *stk)
+int	get_min_op_count(t_node *node, t_stack *stk)
 {
-	unsigned int	move_count;
+	int	op_count;
 
-	move_count = get_node_position(stk->list, node);
-	if (move_count > stk->size / 2)
-		move_count = stk->size - move_count;
-	return (move_count);
+	op_count = get_node_index(stk->list, node);
+	if (op_count > (int) stk->size / 2)
+		op_count = -(stk->size - op_count);
+	return (op_count);
 }
 
 void	move_node_to_top(t_stack **stk, t_node *node, bool verbose)
@@ -44,7 +44,7 @@ void	move_node_to_top(t_stack **stk, t_node *node, bool verbose)
 	ptr = (*stk)->list;
 	if (node == NULL)
 		return ;
-	node_pos = get_node_position((*stk)->list, node);
+	node_pos = get_node_index((*stk)->list, node);
 	node_closer_to_btm = node_pos > (*stk)->size / 2;
 	while (ptr != node)
 	{

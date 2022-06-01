@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/31 23:52:25 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/01 10:58:56 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,11 @@ int	main(int argc, char *argv[])
 {
 	size_t		stk_size;
 	t_stacks	stks;
-	t_stack		*stk_a;
 
-	stk_a = &stks.a;
 	init_stacks(&stks);
 	parse_input(argc, argv, &stks);
-	validate_data(&stks);
-	stk_size = stk_a->size;
+	validate_input(&stks);
+	stk_size = stks.a.size;
 	sort_stack(&stks, stk_size);
 	free_nodes(&stks);
 	return (EXIT_SUCCESS);

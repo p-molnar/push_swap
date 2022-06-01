@@ -1,6 +1,5 @@
 CC			=	gcc
-# CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address -g
-CFLAGS		=	-fsanitize=address -g
+CFLAGS		=	-Wall -Werror -Wextra -fsanitize=address -g
 HEADER_FILES=	include
 
 FT_PRINTF	=	ft_printf
@@ -23,7 +22,6 @@ PS_SRC		=	main.c 					\
 				stack_preparation.c		\
 				stack_preparation_util.c\
 				free_nodes.c			\
-				fastest_sorting_path.c
 
 CHECKER_SRC	=	checker.c				\
 				push_ops.c				\
@@ -53,7 +51,7 @@ $(FT_PRINTF_NAME):
 bonus: $(CHECKER_NAME)
 
 $(CHECKER_NAME):	$(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) $(PS_OBJ)	
-	$(CC) $(CFLAGS) $(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) $(addprefix obj/, check_sorting.o error.o free_nodes.o parse.o stack_operations.o stack_operation_util.o list_operations.o) -o $(CHECKER_NAME)
+	$(CC) $(CFLAGS) $(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) $(addprefix obj/, check_sorting.o error.o free_nodes.o input.o stack_operations.o stack_operation_util.o list_operations.o) -o $(CHECKER_NAME)
 
 obj/%.o:	*/%.c
 	mkdir -p obj

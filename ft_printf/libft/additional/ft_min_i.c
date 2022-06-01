@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ps_sorting_ops.h                                   :+:    :+:            */
+/*   ft_min_i.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 11:19:22 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 13:07:39 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/03/07 18:34:03 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/06/01 15:47:23 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_SORTING_OPS_H
-# define PS_SORTING_OPS_H
+#include "libft.h"
+#include <stdarg.h>
 
-# include <push_swap.h>
+int	ft_min_i(size_t arg_count, ...)
+{
+	size_t	i;
+	va_list	args;
+	int		curr_val;
+	int		min_val;
 
-void	swap(t_stack **stk, bool verbose);
-void	push(t_stack **src, t_stack **dst, bool verbose);
-void	rotate(t_stack **stk, bool reverse, bool verbose);
-void	rotate_both(t_stack **stk_a, t_stack **stk_b, \
-					bool reverse, bool verbose);
-#endif
+	i = 0;
+	va_start(args, arg_count);
+	min_val = va_arg(args, int);
+	while (i < (arg_count - 1))
+	{
+		curr_val = va_arg(args, int);
+		if (curr_val < min_val)
+			min_val = curr_val;
+		i++;
+	}	
+	va_end(args);
+	return (min_val);
+}

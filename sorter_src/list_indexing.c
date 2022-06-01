@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 15:55:06 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/31 23:58:33 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/01 11:10:14 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	index_list(t_stacks *stks)
 
 	used_nodes = malloc(stks->a.size * sizeof(t_node *));
 	if (used_nodes == NULL)
-		throw_error(stks, true);
+		error(stks, VERBOSE);
 	stk = stks->a.list;
 	i = 0;
 	while (stks->a.size != i)
