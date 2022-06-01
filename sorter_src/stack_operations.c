@@ -83,8 +83,8 @@ void	rotate(t_stack **stk, bool reverse, bool verbose)
 void	rotate_both(t_stack **stk_a, t_stack **stk_b,
 		bool reverse, bool verbose)
 {
-	rotate(stk_a, reverse, NO_VERBOSE);
-	rotate(stk_b, reverse, NO_VERBOSE);
+	rotate(stk_a, reverse, SILENT);
+	rotate(stk_b, reverse, SILENT);
 	if (verbose == false)
 		return ;
 	if (reverse == true)

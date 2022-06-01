@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/17 00:55:13 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/18 10:31:17 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 01:01:09 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ra(t_stacks **stks)
 	t_stack	*stk_a;
 
 	stk_a = &(*stks)->a;
-	rotate(&stk_a, false, false);
+	rotate(&stk_a, NO_REVERSE, SILENT);
 }
 
 void	rb(t_stacks **stks)
@@ -26,11 +26,15 @@ void	rb(t_stacks **stks)
 	t_stack	*stk_b;
 
 	stk_b = &(*stks)->b;
-	rotate(&stk_b, false, false);
+	rotate(&stk_b, NO_REVERSE, SILENT);
 }
 
 void	rr(t_stacks **stks)
 {
-	ra(stks);
-	rb(stks);
+	t_stack	*stk_a;
+	t_stack	*stk_b;
+
+	stk_a = &(*stks)->b;
+	stk_b = &(*stks)->b;
+	rotate_both(&stk_a, &stk_b, NO_REVERSE, SILENT);
 }

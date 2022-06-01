@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 10:58:04 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 00:56:31 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 void	exec_sorting_cmd(char *cmd, t_stacks **stks)
 {
-	static const t_item	ht[HT_SIZE] = {{"sa", &sa}, {"sb", &sb}, {"ss", &ss},
+	const t_item	ht[HT_SIZE] = {{"sa", &sa}, {"sb", &sb}, {"ss", &ss},
 	{"pa", &pa}, {"pb", &pb}, {"ra", &ra},
 	{"rb", &rb}, {"rr", &rr}, {"rra", &rra},
 	{"rrb", &rrb}, {"rrr", &rrr}};
@@ -30,12 +30,44 @@ void	exec_sorting_cmd(char *cmd, t_stacks **stks)
 	i = 0;
 	while (i < HT_SIZE)
 	{
-		if (ft_strncmp(ht[i].cmd_name, cmd, ft_strlen(cmd) - 1) == 0)
+		if (ft_strncmp(ht[i].cmd_name, cmd, ft_strlen(cmd)) == 0)
 		{
 			ht[i].fn(stks);
 		}
 		i++;
 	}
+}
+
+void	print_stacks(t_stacks *stk)
+{
+	t_node	*stk_a;
+	t_node	*stk_b;
+
+	stk_a = stk->a.list;
+	stk_b = stk->b.list;
+	printf("-----------+-----------\n");
+	printf("%5c%c%5c|%5c%c%5c\n", ' ', 'a', ' ', ' ', 'b', ' ');
+	printf("-----------+-----------\n");
+	while (stk_a|| stk_b)
+	{
+		if (stk_a)
+		{
+			printf("%6ld", stk_a->val);
+			stk_a = stk_a->next;
+		}
+		else
+			printf("%6c", ' ');
+		printf("%6c", '|');
+		if (stk_b)
+		{
+			printf("%6ld", stk_b->val);
+			stk_b = stk_b->next;
+		}	
+		else
+			printf("%6c", ' ');
+		printf("\n");
+	}
+	printf("-----------+-----------\n");
 }
 
 int	main(int argc, char *argv[])
@@ -59,6 +91,7 @@ int	main(int argc, char *argv[])
 		free(cmd);
 		cmd = get_next_line(STDIN);
 	}
+	print_stacks(&stks);
 	if (is_stack_sorted(stk_a->list, initial_stk_size, ASCENDING))
 		ft_printf("OK\n");
 	else

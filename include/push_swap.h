@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 14:06:41 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 00:43:29 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ enum {
 
 enum {
 	VERBOSE = 1,
-	NO_VERBOSE = 0,
+	SILENT = 0,
 };
 
 enum {

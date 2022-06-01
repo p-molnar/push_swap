@@ -80,19 +80,16 @@ bool	is_swap_beneficial(t_stack *stk)
 
 	ordered_list_head = find_longest_ordered_list_head(stk->list);
 	ordered_node_count = get_ordered_el_count(ordered_list_head, stk->list);
-	swap(&stk, false);
-	stk->total_op_count -= 1;
+	swap(&stk, SILENT);
 	ordered_list_head = find_longest_ordered_list_head(stk->list);
 	if (get_ordered_el_count(ordered_list_head, stk->list) > ordered_node_count)
 	{
-		swap(&stk, false);
-		stk->total_op_count -= 1;
+		swap(&stk, SILENT);
 		return (true);
 	}
 	else
 	{
-		swap(&stk, false);
-		stk->total_op_count -= 1;
+		swap(&stk, SILENT);
 		return (false);
 	}
 }
@@ -112,14 +109,15 @@ void	separate_stacks(t_stacks *stks)
 	{
 		if (is_swap_beneficial(&stks->a) == true)
 		{
-			swap(&stk_a, true);
+			swap(&stk_a, VERBOSE);
 			index_list(stks);
 			ordered_list_head = find_longest_ordered_list_head(stk_a->list);
 			mark_unordered_nodes(ordered_list_head, stk_a->list);
 		}
 		else if (stk_a->list->is_sorted == false)
-			push(&stk_a, &stk_b, true);
+			push(&stk_a, &stk_b, VERBOSE);
 		else
-			rotate(&stk_a, false, true);
+			rotate(&stk_a, NO_REVERSE, VERBOSE);
+		// print_stacks(stks);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/11 10:29:52 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 18:38:11 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 00:09:03 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ size_t	get_total_op_count(int op_count_a, int op_count_b)
 		total += ft_abs(op_count_a - op_count_b);
 	}
 	else
-		total = ft_abs(op_count_a) + ft_abs(op_count_a);
+		total = ft_abs(op_count_a) + ft_abs(op_count_b);
 	return (total);
 }
 
@@ -86,41 +86,28 @@ t_node	*get_min_op_count_node(t_stack *stk_a, t_stack *stk_b)
 	return (min_node);
 }
 
-void	rotate_nodes_neg(int op_count_a, int op_count_b, t_stacks *stks)
+void	rotate_nodes(int op_count_a, int op_count_b, t_stacks *stks)
 {
 	t_stack	*stk_a;
 	t_stack	*stk_b;
 	int		val;
+	bool	reverse;
 
 	stk_a = &stks->a;
 	stk_b = &stks->b;
-	val = ft_max_i(2, op_count_a, op_count_b);
-	while (val-- > 0)
-		rotate_both(&stk_a, &stk_b, REVERSE, VERBOSE);	
-	val = ft_max_i(2, op_count_a, op_count_b);
-	while (ft_abs(op_count_a--) - ft_abs(val) > 0)
-		rotate(&stk_a, REVERSE, VERBOSE);
-	while (ft_abs(op_count_b--) - ft_abs(val) > 0)
-		rotate(&stk_b, REVERSE, VERBOSE);
-}
-
-void	rotate_nodes_pos(int op_count_a, int op_count_b, t_stacks *stks)
-{
-	t_stack	*stk_a;
-	t_stack	*stk_b;
-	int		val;
-
-	stk_a = &stks->a;
-	stk_b = &stks->b;
+	reverse = op_count_a < 0 || op_count_b < 0;
+	op_count_a = ft_abs(op_count_a);
+	op_count_b = ft_abs(op_count_b);
 	val = ft_min_i(2, op_count_a, op_count_b);
 	while (val-- > 0)
-		rotate_both(&stk_a, &stk_b, NO_REVERSE, VERBOSE);	
+		rotate_both(&stk_a, &stk_b, reverse, VERBOSE);	
 	val = ft_min_i(2, op_count_a, op_count_b);
 	while (ft_abs(op_count_a--) - ft_abs(val) > 0)
-		rotate(&stk_a, NO_REVERSE, VERBOSE);
+		rotate(&stk_a, reverse, VERBOSE);
 	while (ft_abs(op_count_b--) - ft_abs(val) > 0)
-		rotate(&stk_b, NO_REVERSE, VERBOSE);
+		rotate(&stk_b, reverse, VERBOSE);
 }
+
 void	get_stacks_in_position(t_stacks *stks, t_node *node)
 {
 	t_stack	*stk_a;
@@ -132,13 +119,13 @@ void	get_stacks_in_position(t_stacks *stks, t_node *node)
 	stk_b = &stks->b;
 	op_count_a = get_min_op_count(get_matching_node(stk_a, node), stk_a);
 	op_count_b = get_min_op_count(node, stk_b);
-	if (op_count_a < 0 && op_count_b < 0)
+	if (op_count_a <= 0 && op_count_b <= 0)
 	{
-		rotate_nodes_neg(op_count_a, op_count_b, stks);	
+		rotate_nodes(op_count_a, op_count_b, stks);	
 	}
-	else if (op_count_a > 0 && op_count_b > 0)
+	else if (op_count_a >= 0 && op_count_b >= 0)
 	{
-		rotate_nodes_pos(op_count_a, op_count_b, stks);
+		rotate_nodes(op_count_a, op_count_b, stks);
 	}
 	else
 	{
@@ -173,4 +160,5 @@ void	sort_stack(t_stacks *stks, size_t stk_size)
 		}
 		move_node_to_top(&stk_a, get_extreme_val(stk_a->list, MIN), VERBOSE);
 	}
+	// print_stacks(stks);
 }

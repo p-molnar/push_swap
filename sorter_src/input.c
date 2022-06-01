@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 21:13:24 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 11:10:54 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 00:43:29 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	parse_input(int argc, char *argv[], t_stacks *stks)
 	t_node		*new_node;
 
 	if (argc < 2)
-		error(stks, NO_VERBOSE);
+		error(stks, SILENT);
 	i = 1;
 	while (i < (size_t) argc)
 	{
