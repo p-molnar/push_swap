@@ -1,0 +1,9 @@
+.DS_Store
+.vscode
+main.c
+*.pdf
+*.o
+*test*
+*.out
+*.a
+*todo*

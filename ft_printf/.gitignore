@@ -1,0 +1,9 @@
+main.c
+.DS_Store
+ft_printf_tester
+printfTester
+*.a
+*.o
+*/*.o
+*.out
+*.pdf
