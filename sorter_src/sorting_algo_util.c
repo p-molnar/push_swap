@@ -5,14 +5,43 @@
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/05/13 22:29:29 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 14:47:51 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/06/02 13:48:28 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/06/02 15:18:42 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-unsigned int	get_node_index(t_node *stk, t_node *node)
+t_node	*get_matching_node(t_node *node_to_match, t_stack *stk)
+{
+	t_node	*stk_a;
+
+	stk_a = stk->list;
+	while (stk_a)
+	{
+		if (stk_a->val < stk_a->next->val \
+			&& (node_to_match->val > stk_a->val \
+			&& node_to_match->val < stk_a->next->val))
+		{
+			return (stk_a->next);
+		}
+		else if (stk_a->val > stk_a->next->val \
+			&& ((node_to_match->val > stk_a->val \
+			&& node_to_match->val > stk_a->next->val) \
+			|| (node_to_match->val < stk_a->val \
+			&& node_to_match->val < stk_a->next->val)))
+		{
+			return (stk_a->next);
+		}
+		if (stk_a->next->next != NULL)
+			stk_a = stk_a->next;
+		else
+			break ;
+	}
+	return (stk->list);
+}
+
+size_t	get_node_index(t_node *stk, t_node *node)
 {
 	size_t	i;
 
@@ -56,7 +85,7 @@ void	move_node_to_top(t_stack **stk, t_node *node, bool verbose)
 	}
 }
 
-t_node	*get_extreme_val(t_node *stk, int extreme_type)
+t_node	*get_extreme_val_node(t_node *stk, int extreme_type)
 {
 	t_node	*extreme_val_node;
 	int		coeff;

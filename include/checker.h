@@ -6,14 +6,14 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 10:29:00 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/18 15:11:14 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 13:43:50 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include <ps_custom_data_types.h>
+# include <ps_data_types.h>
 
 typedef struct s_item
 {

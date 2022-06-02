@@ -6,13 +6,12 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 21:13:24 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/02 00:43:29 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 15:17:58 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
-#include <push_swap.h>
 #include <libft.h>
+#include <push_swap.h>
 
 static long int	ft_atoi_modded(char **str, t_stacks *stks)
 {
@@ -28,14 +27,14 @@ static long int	ft_atoi_modded(char **str, t_stacks *stks)
 		(*str)++;
 	}
 	if (!ft_isdigit(**str))
-		error(stks, VERBOSE);
+		error_handling(stks, VERBOSE);
 	while (**str && ft_isdigit(**str))
 	{
 		num = 10 * num + (**str - '0');
 		(*str)++;
 	}
 	if (**str != ' ' && **str != '\0')
-		error(stks, VERBOSE);
+		error_handling(stks, VERBOSE);
 	return (num * sign);
 }
 
@@ -46,10 +45,10 @@ static bool	is_in_int_range(long val)
 
 static bool	is_unique_val(t_node *node, t_node *stack)
 {
-	t_node	*node_ptr;
+	t_node	*lookup_node;
 
-	node_ptr = search_node_val(stack, node->val);
-	if (node_ptr == NULL)
+	lookup_node = search_node_val(stack, node->val);
+	if (lookup_node == NULL)
 		return (true);
 	return (false);
 }
@@ -62,13 +61,13 @@ void	parse_input(int argc, char *argv[], t_stacks *stks)
 	t_node		*new_node;
 
 	if (argc < 2)
-		error(stks, SILENT);
+		error_handling(stks, SILENT);
 	i = 1;
 	while (i < (size_t) argc)
 	{
 		curr_arg = argv[i];
 		if (curr_arg[ft_strlen(curr_arg) - 1] == ' ')
-			error(stks, VERBOSE);
+			error_handling(stks, VERBOSE);
 		while (*curr_arg)
 		{
 			parsed_val = ft_atoi_modded(&curr_arg, stks);
@@ -96,7 +95,7 @@ void	validate_input(t_stacks *stks)
 		unique_val = is_unique_val(node, node->next);
 		val_in_int_range = is_in_int_range(val);
 		if (unique_val == false || val_in_int_range == false)
-			error(stks, VERBOSE);
+			error_handling(stks, VERBOSE);
 		node = node->next;
 	}
 }

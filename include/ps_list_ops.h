@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ps_sorting_ops.h                                   :+:    :+:            */
+/*   ps_list_ops.h                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/07 11:19:22 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 13:07:39 by pmolnar       ########   odam.nl         */
+/*   Created: 2022/04/05 13:53:06 by pmolnar       #+#    #+#                 */
+/*   Updated: 2022/06/02 15:14:23 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_SORTING_OPS_H
-# define PS_SORTING_OPS_H
+#ifndef PS_LIST_OPS_H
+# define PS_LIST_OPS_H
 
-# include <push_swap.h>
+# include <ps_data_types.h>
 
-void	swap(t_stack **stk, bool verbose);
-void	push(t_stack **src, t_stack **dst, bool verbose);
-void	rotate(t_stack **stk, bool reverse, bool verbose);
-void	rotate_both(t_stack **stk_a, t_stack **stk_b, \
-					bool reverse, bool verbose);
+// list_functions.c
+t_node	*get_last_node(t_node *head);
+t_node	*create_node(long data);
+void	append_list(t_node **head, t_node *new_node);
+t_node	*search_node_val(t_node *haystack, long needle);
+size_t	get_list_size(t_node *head);
+void	index_list(t_stacks *stks);
+
 #endif

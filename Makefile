@@ -9,10 +9,12 @@ GNL			=	get_next_line_utils.c	\
 				get_next_line.c
 
 PS_NAME		=	push_swap
+CHECKER_NAME=	checker
+
 PS_SRC		=	main.c 					\
 				input.c					\
 				error.c					\
-				list_operations.c		\
+				list_functions.c		\
 				stack_operations.c		\
 				stack_operation_util.c	\
 				check_sorting.c			\
@@ -29,10 +31,16 @@ CHECKER_SRC	=	checker.c				\
 				rotate_ops.c			\
 				swap_ops.c				\
 
-CHECKER_NAME=	checker
+PS_OBJ_CHECKER	=	check_sorting.c		\
+					error.c				\
+					free_nodes.c		\
+					input.c				\
+					stack_operations.c	\
+					stack_operation_util.c \
+					list_functions.c		\
 
 PS_OBJ			=	$(addprefix obj/, $(PS_SRC:.c=.o))
-CHECKER_OBJ		=	$(addprefix obj/, $(CHECKER_SRC:.c=.o))
+CHECKER_OBJ		=	$(addprefix obj/, $(CHECKER_SRC:.c=.o)) $(addprefix obj/, $(PS_OBJ_CHECKER:.c=.o))
 GNL_OBJ			=	$(addprefix obj/, $(GNL:.c=.o))
 
 all:	$(PS_NAME) $(CHECKER_NAME)
@@ -51,7 +59,7 @@ $(FT_PRINTF_NAME):
 bonus: $(CHECKER_NAME)
 
 $(CHECKER_NAME):	$(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) $(PS_OBJ)	
-	$(CC) $(CFLAGS) $(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) $(addprefix obj/, check_sorting.o error.o free_nodes.o input.o stack_operations.o stack_operation_util.o list_operations.o) -o $(CHECKER_NAME)
+	$(CC) $(CFLAGS) $(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) -o $(CHECKER_NAME)
 
 obj/%.o:	*/%.c
 	mkdir -p obj
@@ -75,4 +83,4 @@ norm:
 	norminette checker_src
 	norminette sorter_src
 
-.PHONY: all clean fclean re bonus 
+.PHONY: all clean fclean re bonus norm

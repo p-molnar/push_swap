@@ -6,11 +6,11 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 22:13:07 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 23:56:11 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 15:17:45 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ps_custom_data_types.h>
+#include <push_swap.h>
 #include <stdlib.h>
 
 void	free_nodes(t_stacks *stks)

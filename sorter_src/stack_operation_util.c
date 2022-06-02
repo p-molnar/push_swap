@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/14 00:28:53 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/31 22:54:59 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 15:18:57 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	init_stacks(t_stacks *stks)
 {
 	stks->a.list = NULL;
 	stks->a.name = 'a';
-	stks->a.total_op_count = 0;
 	stks->b.list = NULL;
 	stks->b.name = 'b';
-	stks->b.total_op_count = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/13 23:02:51 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 12:04:05 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 15:19:18 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	get_false_node_position(t_node *stk, int lookup)
 	last = 0;
 	while (stk)
 	{
-		if (stk->is_sorted == false)
+		if (stk->is_in_order == false)
 		{
 			if (lookup == 1)
 				return (counter);
@@ -51,41 +51,16 @@ void	push_closest_marked_node(t_stacks *stks)
 	last_false_position = get_false_node_position(stk_a->list, -1);
 	if (first_false_position < (stk_a->size - last_false_position))
 	{
-		while (stk_a->list->is_sorted != false)
+		while (stk_a->list->is_in_order != false)
 			rotate(&stk_a, false, true);
 	}
 	else
 	{
-		while (stk_a->list->is_sorted != false)
+		while (stk_a->list->is_in_order != false)
 			rotate(&stk_a, true, true);
 	}
 	push(&stk_a, &stk_b, true);
 }
-
-// void	push_closest_marked_node(t_stacks *stks)
-// {
-// 	t_stack	*stk_a;
-// 	t_stack	*stk_b;
-// 	t_node	*min_node;
-// 	t_node	*ptr;
-// 	long	min_val;
-
-// 	stk_a = &stks->a;
-// 	stk_b = &stks->b;
-// 	ptr = stk_a->list;
-// 	min_val = (unsigned int) -1;
-// 	while (ptr)
-// 	{
-// 		if (ptr->is_sorted == false && ptr->val < min_val)
-// 		{
-// 			min_node = ptr;
-// 			min_val = min_node->val;
-// 		}
-// 		ptr = ptr->next;
-// 	}
-// 	move_node_to_top(&stk_a, min_node, true);
-// 	push(&stk_a, &stk_b, true);
-// }
 
 bool	stk_has_marked_node(t_node *stk)
 {
@@ -94,14 +69,14 @@ bool	stk_has_marked_node(t_node *stk)
 	ptr = stk;
 	while (ptr)
 	{
-		if (ptr->is_sorted == false)
+		if (ptr->is_in_order == false)
 			return (true);
 		ptr = ptr->next;
 	}
 	return (false);
 }
 
-size_t	get_ordered_el_count(t_node *node, t_node *stk_top)
+size_t	get_ordered_node_count(t_node *node, t_node *stk_top)
 {
 	const t_node	*start_node;
 	unsigned int	ordered_el_count;

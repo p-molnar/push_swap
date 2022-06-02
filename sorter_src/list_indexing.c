@@ -6,12 +6,12 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/13 15:55:06 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 11:10:14 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 15:25:18 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-#include <list_ops.h>
+#include <stdlib.h>
 
 static int	index_of_node(t_node *lookup_val,
 			t_node **arr, unsigned int arr_size)
@@ -28,8 +28,8 @@ static int	index_of_node(t_node *lookup_val,
 	return (-1);
 }
 
-static t_node	*get_available_node(t_node *stk,
-				t_node **used_nodes, unsigned int size)
+static t_node	*get_available_node(t_node *stk, \
+				t_node **used_nodes, size_t	size)
 {
 	while (stk)
 	{
@@ -42,14 +42,14 @@ static t_node	*get_available_node(t_node *stk,
 
 void	index_list(t_stacks *stks)
 {
-	t_node			**used_nodes;
-	t_node			*min_node;
-	t_node			*stk;
-	unsigned int	i;
+	t_node	**used_nodes;
+	t_node	*min_node;
+	t_node	*stk;
+	size_t	i;
 
 	used_nodes = malloc(stks->a.size * sizeof(t_node *));
 	if (used_nodes == NULL)
-		error(stks, VERBOSE);
+		error_handling(stks, VERBOSE);
 	stk = stks->a.list;
 	i = 0;
 	while (stks->a.size != i)
@@ -66,4 +66,5 @@ void	index_list(t_stacks *stks)
 		used_nodes[i++] = min_node;
 		stk = stks->a.list;
 	}
+	free(used_nodes);
 }

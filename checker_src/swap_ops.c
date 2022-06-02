@@ -6,11 +6,10 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/17 00:44:48 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/02 01:01:32 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 15:27:40 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ps_sorting_ops.h>
 #include <push_swap.h>
 
 void	sa(t_stacks **stks)

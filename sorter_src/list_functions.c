@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   list_operations.c                                  :+:    :+:            */
+/*   list_functions.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/05 13:44:10 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/13 23:45:24 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 15:21:09 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ps_custom_data_types.h>
-
+#include <push_swap.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 t_node	*get_last_node(t_node *head)
 {
@@ -34,7 +32,7 @@ t_node	*create_node(long data)
 		return (NULL);
 	node->val = data;
 	node->index = -1;
-	node->is_sorted = false;
+	node->is_in_order = false;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);
@@ -71,7 +69,7 @@ t_node	*search_node_val(t_node *haystack, long needle)
 	return (NULL);
 }
 
-unsigned int	get_list_size(t_node *head)
+size_t	get_list_size(t_node *head)
 {
 	size_t	node_count;	
 

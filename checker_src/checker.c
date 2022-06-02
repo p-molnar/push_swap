@@ -6,50 +6,51 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/02 10:08:39 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 15:27:31 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <checker.h>
 #include <push_swap.h>
+
 #include <get_next_line.h>
 #include <libft.h>
 #include <ft_printf.h>
-#include <checker.h>
 
 #define STDIN 0
 #define HT_SIZE 11
 
-void	print_stacks(t_stacks *stk)
-{
-	t_node	*stk_a;
-	t_node	*stk_b;
+// void	print_stacks(t_stacks *stk)
+// {
+// 	t_node	*stk_a;
+// 	t_node	*stk_b;
 
-	stk_a = stk->a.list;
-	stk_b = stk->b.list;
-	printf("-----------+-----------\n");
-	printf("%5c%c%5c|%5c%c%5c\n", ' ', 'a', ' ', ' ', 'b', ' ');
-	printf("-----------+-----------\n");
-	while (stk_a|| stk_b)
-	{
-		if (stk_a)
-		{
-			printf("%6ld", stk_a->val);
-			stk_a = stk_a->next;
-		}
-		else
-			printf("%6c", ' ');
-		printf("%6c", '|');
-		if (stk_b)
-		{
-			printf("%6ld", stk_b->val);
-			stk_b = stk_b->next;
-		}	
-		else
-			printf("%6c", ' ');
-		printf("\n");
-	}
-	printf("-----------+-----------\n");
-}
+// 	stk_a = stk->a.list;
+// 	stk_b = stk->b.list;
+// 	printf("-----------+-----------\n");
+// 	printf("%5c%c%5c|%5c%c%5c\n", ' ', 'a', ' ', ' ', 'b', ' ');
+// 	printf("-----------+-----------\n");
+// 	while (stk_a|| stk_b)
+// 	{
+// 		if (stk_a)
+// 		{
+// 			printf("%6ld", stk_a->val);
+// 			stk_a = stk_a->next;
+// 		}
+// 		else
+// 			printf("%6c", ' ');
+// 		printf("%6c", '|');
+// 		if (stk_b)
+// 		{
+// 			printf("%6ld", stk_b->val);
+// 			stk_b = stk_b->next;
+// 		}	
+// 		else
+// 			printf("%6c", ' ');
+// 		printf("\n");
+// 	}
+// 	printf("-----------+-----------\n");
+// }
 
 void	exec_sorting_cmd(char *cmd, t_stacks **stks)
 {
@@ -65,6 +66,7 @@ void	exec_sorting_cmd(char *cmd, t_stacks **stks)
 		if (ft_strncmp(ht[i].cmd_name, cmd, ft_strlen(cmd) - 1) == 0)
 		{
 			ht[i].fn(stks);
+			return ;
 		}
 		i++;
 	}
@@ -72,11 +74,11 @@ void	exec_sorting_cmd(char *cmd, t_stacks **stks)
 
 int	main(int argc, char *argv[])
 {
-	unsigned int	initial_stk_size;
-	t_stacks		stks;
-	t_stacks		*stks_ptr;
-	t_stack			*stk_a;
-	char			*cmd;
+	size_t		initial_stk_size;
+	t_stacks	stks;
+	t_stacks	*stks_ptr;
+	t_stack		*stk_a;
+	char		*cmd;
 
 	stks_ptr = &stks;
 	stk_a = &stks.a;

@@ -6,78 +6,12 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/01 10:58:56 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 15:18:23 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
 #include <push_swap.h>
-#include <ps_custom_data_types.h>
-#include <ps_sorting_ops.h>
-
-void	print_stacks(t_stacks *stk)
-{
-	t_node	*stk_a;
-	t_node	*stk_b;
-
-	stk_a = stk->a.list;
-	stk_b = stk->b.list;
-	printf("-----------+-----------\n");
-	printf("%5c%c%5c|%5c%c%5c\n", ' ', 'a', ' ', ' ', 'b', ' ');
-	printf("-----------+-----------\n");
-	while (stk_a|| stk_b)
-	{
-		if (stk_a)
-		{
-			printf("%6ld", stk_a->val);
-			stk_a = stk_a->next;
-		}
-		else
-			printf("%6c", ' ');
-		printf("%6c", '|');
-		if (stk_b)
-		{
-			printf("%6ld", stk_b->val);
-			stk_b = stk_b->next;
-		}	
-		else
-			printf("%6c", ' ');
-		printf("\n");
-	}
-	printf("-----------+-----------\n");
-}
-
-void	print_stacks_2(t_stack *stk_1, t_stack *stk_2)
-{
-	t_node *stk_a = stk_1->list;
-	t_node *stk_b = stk_2->list;
-
-	printf("-----------+-----------\n");
-	printf("%5c%c%5c|%5c%c%5c\n", ' ', 'a', ' ', ' ', 'b', ' ');
-	printf("-----------+-----------\n");
-	while (stk_a || stk_b)
-	{
-		if (stk_a)
-		{
-			printf("%6ld", stk_a->val);
-			stk_a = stk_a->next;
-		}
-		else
-			printf("%6c", ' ');
-		printf("%6c", '|');
-		if (stk_b)
-		{
-			printf("%6ld", stk_b->val);
-			stk_b = stk_b->next;
-		}	
-		else
-			printf("%6c", ' ');
-		printf("\n");
-	}
-	printf("-----------+-----------\n");
-}
+#include <stdlib.h>
 
 int	main(int argc, char *argv[])
 {

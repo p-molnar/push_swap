@@ -6,15 +6,12 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/06 15:40:52 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/05/04 13:17:37 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 13:47:10 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ps_custom_data_types.h>
-#include <stdlib.h>
-#include <stdbool.h>
+#include <push_swap.h>
 
-// if stk is null, it'll return true! write exception
 bool	is_stack_sorted(t_node *stk, size_t list_size, int sorting)
 {
 	size_t	i;
