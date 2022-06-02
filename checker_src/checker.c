@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/02 00:56:31 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/02 10:08:39 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,6 @@
 
 #define STDIN 0
 #define HT_SIZE 11
-
-void	exec_sorting_cmd(char *cmd, t_stacks **stks)
-{
-	const t_item	ht[HT_SIZE] = {{"sa", &sa}, {"sb", &sb}, {"ss", &ss},
-	{"pa", &pa}, {"pb", &pb}, {"ra", &ra},
-	{"rb", &rb}, {"rr", &rr}, {"rra", &rra},
-	{"rrb", &rrb}, {"rrr", &rrr}};
-	int					i;
-
-	i = 0;
-	while (i < HT_SIZE)
-	{
-		if (ft_strncmp(ht[i].cmd_name, cmd, ft_strlen(cmd)) == 0)
-		{
-			ht[i].fn(stks);
-		}
-		i++;
-	}
-}
 
 void	print_stacks(t_stacks *stk)
 {
@@ -70,6 +51,25 @@ void	print_stacks(t_stacks *stk)
 	printf("-----------+-----------\n");
 }
 
+void	exec_sorting_cmd(char *cmd, t_stacks **stks)
+{
+	const t_item	ht[HT_SIZE] = {{"sa", &sa}, {"sb", &sb}, {"ss", &ss}, \
+									{"pa", &pa}, {"pb", &pb}, {"ra", &ra}, \
+									{"rb", &rb}, {"rr", &rr}, {"rra", &rra}, \
+									{"rrb", &rrb}, {"rrr", &rrr}};
+	int				i;
+
+	i = 0;
+	while (i < HT_SIZE)
+	{
+		if (ft_strncmp(ht[i].cmd_name, cmd, ft_strlen(cmd) - 1) == 0)
+		{
+			ht[i].fn(stks);
+		}
+		i++;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	unsigned int	initial_stk_size;
@@ -91,7 +91,6 @@ int	main(int argc, char *argv[])
 		free(cmd);
 		cmd = get_next_line(STDIN);
 	}
-	print_stacks(&stks);
 	if (is_stack_sorted(stk_a->list, initial_stk_size, ASCENDING))
 		ft_printf("OK\n");
 	else
