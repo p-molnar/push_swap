@@ -1,4 +1,5 @@
 .DS*
+*.a
 *.pdf
 *.out
 obj

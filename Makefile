@@ -43,10 +43,17 @@ PS_OBJ			=	$(addprefix obj/, $(PS_SRC:.c=.o))
 CHECKER_OBJ		=	$(addprefix obj/, $(CHECKER_SRC:.c=.o)) $(addprefix obj/, $(PS_OBJ_CHECKER:.c=.o))
 GNL_OBJ			=	$(addprefix obj/, $(GNL:.c=.o))
 
+RED		=	\033[0;31m
+GREEN	=	\033[0;32m
+YELLOW	=	\033[1;33m
+DEF		=	\033[0m
+
 all:	$(PS_NAME) $(CHECKER_NAME)
+
 
 $(PS_NAME): $(FT_PRINTF_NAME) $(PS_OBJ)
 	$(CC) $(CFLAGS) $(PS_OBJ) $(FT_PRINTF_NAME) -o $(PS_NAME)
+	@echo "$(GREEN)$(PS_NAME) was sucessfully made\n$(DEF)"
 
 obj/%.o:	sorter_src/%.c
 	mkdir -p obj
@@ -60,6 +67,7 @@ bonus: $(CHECKER_NAME)
 
 $(CHECKER_NAME):	$(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) $(PS_OBJ)	
 	$(CC) $(CFLAGS) $(CHECKER_OBJ) $(FT_PRINTF_NAME) $(GNL_OBJ) -o $(CHECKER_NAME)
+	@echo "$(GREEN)$(CHECKER_NAME) was sucessfully made\n$(DEF)"
 
 obj/%.o:	*/%.c
 	mkdir -p obj
