@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 18:28:35 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/02 15:27:31 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/06 19:08:29 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	exec_sorting_cmd(char *cmd, t_stacks **stks)
 		}
 		i++;
 	}
+	error_handling(*stks, VERBOSE);
 }
 
 int	main(int argc, char *argv[])

@@ -6,7 +6,7 @@
 /*   By: pmolnar <pmolnar@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/31 15:50:08 by pmolnar       #+#    #+#                 */
-/*   Updated: 2022/06/02 15:16:22 by pmolnar       ########   odam.nl         */
+/*   Updated: 2022/06/06 15:29:40 by pmolnar       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void	free_nodes(t_stacks *stks);
 // input.c
 void	parse_input(int argc, char *argv[], t_stacks *stks);
 void	validate_input(t_stacks *stks);
+
+// input_util.c
+void	set_stack_size(t_stacks *stks);
+long	ft_atoi_modded(char **str, t_stacks *stks);
+bool	is_in_int_range(long val);
+bool	is_unique_val(t_node *node, t_node *stack);
 
 // sorting_algo_util.c
 t_node	*get_matching_node(t_node *node_to_match, t_stack *stk);

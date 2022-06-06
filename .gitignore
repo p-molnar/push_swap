@@ -3,7 +3,7 @@
 *.pdf
 *.out
 obj
+*.o
 *log*
-push_swap
 *vscode*
 *test*
